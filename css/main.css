@@ -94,6 +94,23 @@ h1, h2, h3, p {
     color: var(--main-color);
 }
 
+@keyframes pulse {
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+
+    50% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1);
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+
+    to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
 /******* Filter buttons *******/
 .tab-filters {
     padding: 2.5rem 1rem;
@@ -134,6 +151,13 @@ h1, h2, h3, p {
     text-align: center;
     line-height: 1.6;
     padding: 0 .3rem;
+}
+
+/****** Image cover *****/
+
+.image-cover__img {
+    margin: auto;
+    animation: pulse 1.3s ease-out 1s infinite;
 }
 
 /******** video player *********/
