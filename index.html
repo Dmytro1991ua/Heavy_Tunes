@@ -24,7 +24,6 @@
    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet">
    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="styles/font-awesome.min.css">
    <link rel="stylesheet" href="css/main.css">
 </head>
 
@@ -32,11 +31,12 @@
    <div class="wrapper">
       <a href="index.html" class="logo">
          <h1 class="heading">
-            <span class="heading--colored">~ Heavy</span>
-            <span class="heading--original">Tunes ~</span>
+            <span class="heading--colored"> Heavy</span>
+            <span class="heading--original">Tunes</span>
          </h1>
       </a>
       <main>
+         <!--Tabs filter btns starts-->
          <section class="tab-filters">
             <div class="tabs-filters__body">
                <button class="tab-filter">Video</button>
@@ -44,25 +44,64 @@
                <button class="tab-filter">Radio</button>
             </div>
          </section>
+         <!--Tabs filter btns ends-->
+         <!--Welcome title  starts-->
          <div class="welcome">
             <h2 class="heading welcome__heading">
-               Welcome to a media portal
-               <span class="heading--colored">~ Heavy</span>
-               <span class="heading--original">Tunes ~</span>
+               Welcome to a media library
+               <span class="heading--colored">Heavy</span>
+               <span class="heading--original">Tunes</span>
             </h2>
          </div>
+         <!--Welcome starts starts-->
+         <!-- Tabs content starts-->
+         <!--Video Player starts-->
          <article class="tab-content video">
             <div class="container">
-               <div class="video-container">
-                  <video class="video-container__player" src="video/bismark.mp4" poster="img/play-button.svg"></video>
-                  <div class="video-container__navigation">
-
+               <div class="tab-content__body">
+                  <div class="video-container">
+                     <video class="video-container__player" src="video/bismark.mp4"
+                        poster="img/play-button.svg"></video>
+                     <div class="video-container__navigation">
+                        <button class="video-container__btns btn-play fa fa-play"></button>
+                        <button class="video-container__btns btn-stop fa fa-stop"></button>
+                        <p class="video-container__video-timing video-time-passed">00:00</p>
+                        <input type="range" class="video-container__video-progress" min="0" max="100" step="0.1"
+                           value="0">
+                        <p class="video-container__video-timing video-time-total">00:00</p>
+                        <!--Elements of adjustment volume starts-->
+                        <span class="video-container__volume-icon volume-down fa fa-volume-down "></span>
+                        <input type="range" class="video-container__video-volume" min="0" max="100" step="1"
+                           value="100">
+                        <span class="video-container__volume-icon volume-up fa fa-volume-up"></span>
+                        <!--Elements of adjustment volume ends-->
+                        <p class="video-container__video-fullscreen video-icon fa fa-expand"></p>
+                     </div>
+                  </div>
+                  <div class="video-container__description">
+                     <div class="video-container__description-body">
+                        <ul class="video-container__description-list">
+                           <a href="https://www.sabaton.net/" target="_blank"
+                              class="video-container__description-title">Sabaton</a>
+                           <a href="https://www.sabaton.net/" target="_blank"
+                              class="video-container__description-item"><span>name:</span>Bismarck</a>
+                           <a href="https://www.sabaton.net/" target="_blank"
+                              class="video-container__description-item"><span>album:</span>Standalone single</a>
+                           <a href="https://www.sabaton.net/" target="_blank"
+                              class="video-container__description-item"><span>genre:</span>Heavy metal</a>
+                           <a href="https://www.sabaton.net/" target="_blank"
+                              class="video-container__description-item"><span>country:</span>Sweeden</a>
+                        </ul>
+                     </div>
                   </div>
                </div>
             </div>
          </article>
+         <!--Video Player starts-->
+         <!-- Tabs content starts-->
       </main>
    </div>
+   <script src="https://use.fontawesome.com/bea1a2ac5f.js"></script>
    <script src="js/main.js" type="module"></script>
 </body>
 
