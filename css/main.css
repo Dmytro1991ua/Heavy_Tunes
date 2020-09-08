@@ -1,0 +1,141 @@
+/* General styles */
+
+:root {
+    --bg-main: #46473E;
+    --main-color: #ffffff;
+    --logo-clr: rgb(255, 0, 0);
+    --color-black: #000000;
+}
+
+*, *::before, *::after {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background: var(--bg-main);
+    color: var(--main-color);
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.6rem;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+button, input {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+h1, h2, h3, p {
+    padding: 0;
+    margin: 0;
+}
+
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Logo*/
+
+.logo {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.heading {
+    font-size: calc(26px + 14 * ((100vw - 320px) / (1920 - 320))); /* 16 получаем отнимая размер шрифта по макету (40px) от минимального размера шрифта (24) */
+    letter-spacing: .3rem;
+}
+
+.heading--colored {
+    font-family: 'Dancing Script', cursive;
+    color: var(--logo-clr);
+}
+
+.heading--original {
+    font-family: 'Josefin Sans', sans-serif;
+    color: var(--main-color);
+}
+
+/* Filter buttons */
+.tab-filters {
+    padding: 2.5rem 1rem;
+}
+
+.tabs-filters__body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tab-filter {
+    border: none;
+    font-size: calc(16px + 9 * ((100vw - 320px) / (1920 - 320)));
+    background-color: var(--main-color);
+    padding: 1rem 2.3rem;
+    margin-right: 1rem;
+    border-radius: 5px;
+    transition: all .3s ease-in-out;
+}
+
+.tab-filter:last-child {
+    margin-right: 0;
+}
+
+.tab-filter.active {
+    background-color: var(--color-black);
+    color: var(--main-color);
+}
+
+/* Welcome heading */
+.welcome {}
+
+.welcome__heading {
+    font-size: calc(18px + 20 * ((100vw - 320px) / (1920 - 320)));
+    text-align: center;
+    line-height: 1.6;
+    padding: 0 .6rem;
+}
+
+
+.video-container {
+   max-width: 80rem;
+}
+.video-container__player {
+   width: 100%;
+}
+.video-container__navigation {
+}
