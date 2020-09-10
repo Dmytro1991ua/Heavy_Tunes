@@ -8,6 +8,7 @@
     --player-border: #fffafa;
     --player-nav: #3a423b;
     --color-midnight-blue: #191970;
+    --color-disabled: #aaa;
 }
 
 *, *::before, *::after {
@@ -69,6 +70,10 @@ h1, h2, h3, p {
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
+}
+
+main {
+    padding-bottom: 8rem;
 }
 
 /********* Logo *********/
@@ -156,6 +161,7 @@ h1, h2, h3, p {
 /****** Image cover *****/
 
 .image-cover__img {
+    margin-top: 5rem;
     margin: auto;
     animation: pulse 1.3s ease-out 1s infinite;
 }
@@ -643,6 +649,7 @@ h1, h2, h3, p {
     display: flex;
     justify-content: center;
     padding: 0 1rem;
+    z-index: 10;
 }
 
 @media (min-width: 768px) {
@@ -749,3 +756,286 @@ h1, h2, h3, p {
 }
 
 .audio-footer__audio-time--total {}
+
+/********** Radio Player ******/
+
+.tab-content {}
+
+.radio {}
+
+.container {
+    padding: 0 0.7rem;
+}
+
+@media (min-width: 992px) {
+    .container {
+        padding: 0 1.7rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .container {
+        padding: 0 4rem;
+    }
+}
+
+.tab-content__container {}
+
+/* Radio player title */
+.radio-player {}
+
+@media (min-width: 768px) {
+    .radio-player {
+        margin-bottom: 3rem;
+    }
+
+    .radio-player__container {
+        padding: 0 3rem;
+    }
+
+    .radio-player__body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (min-width: 992px) {
+    .radio-player {
+        margin-bottom: 4rem;
+    }
+
+    .radio-player__container {
+        max-width: 85rem;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 1400px) {
+    .radio-player__container {
+        max-width: 112rem;
+    }
+}
+
+@media (min-width: 2000px) {
+    .radio-player__container {
+        max-width: 114rem;
+    }
+}
+
+.radio-player__image-cover {
+    margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .radio-player__image-cover {
+        flex: 0 1 29%;
+        margin-bottom: 0rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .radio-player__image-cover {
+        flex: 0 1 50%;
+    }
+}
+
+.audio-pradio__img {
+    margin: 0 auto;
+}
+
+.radio-player__audio-title-box {
+    /*width: 100%; */
+}
+
+@media (min-width: 768px) {
+    /*.radio-player__audio-title-box {
+        width: 47%;
+    } */
+}
+
+.radio-player__audio-title {
+    font-size: calc(17px + 17 * ((100vw - 320px) / (1920 - 320)));
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+    .radio-player__audio-title {
+        margin-bottom: 0rem;
+    }
+}
+
+/* Radio player list  */
+.radio-stations {}
+
+.radio-stations__title {
+    font-size: calc(16px + 17 * ((100vw - 320px) / (1920 - 320)));
+    text-transform: uppercase;
+    color: var(--logo-clr);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+    .radio-stations__title {
+        margin-bottom: 4rem;
+    }
+}
+
+.radio-stations__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width: 992px) {
+    .radio-stations__list {
+        margin-bottom: 3rem;
+    }
+}
+
+.radio-stations__item {
+    text-align: center;
+    margin-bottom: 1rem;
+    margin-right: .6rem;
+}
+
+@media (min-width: 992px) {
+    .radio-stations__item {
+        margin-right: 1.7rem;
+    }
+}
+
+.radio-stations__item:last-child {
+    margin-bottom: 0rem;
+    margin-right: 0rem;
+}
+
+.radio-item.select .radio-stations__image-cover {
+    border: 5px solid --bg-main;
+}
+
+.radio-stations__item input[type=radio] {
+    position: absolute;
+    visibility: hidden;
+}
+
+.radio-stations__item:hover .radio-stations__label {
+    color: var(--logo-clr);
+}
+
+.radio-stations__item:hover .radio-stations__image-cover {
+    border: 5px solid var(--logo-clr);
+}
+
+.radio-stations__label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 9;
+    cursor: pointer;
+    -webkit-transition: all 0.25s linear;
+}
+
+.radio-stations__image-cover {
+    width: 14rem;
+    height: 14rem;
+    border: 5px solid transparent;
+    border-radius: 50%;
+    transition: border .25s linear;
+    margin-bottom: .9rem;
+}
+
+.radio-stations__img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    border-radius: 50%;
+}
+
+.radio-stations__btn-select {}
+
+.radio-stations__name {
+    font-size: calc(16px + 16 * ((100vw - 320px) / (1920 - 320)));
+    font-family: 'Dancing Script', cursive;
+}
+
+/* Radio player navigation features*/
+.fixed-footer {}
+
+.radio-footer {}
+
+.radio-footer__navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .radio-footer__navigation {
+        font-size: 3rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .radio-footer__navigation {
+        font-size: 5rem;
+    }
+}
+
+.radio-footer__btn {}
+
+.btn-stop {
+    border: none;
+    background-color: transparent;
+    margin-right: 3rem;
+}
+
+.btn-stop.disabled {
+   color: var(--color-disabled);
+    opacity: .3;
+}
+
+@media (min-width: 768px) {
+    .btn-stop {
+        margin-right: 4rem;
+    }
+}
+
+.radio-footer-icon {}
+
+.radio-footer-volume {
+    margin: 0 1rem;
+}
+
+@media (min-width: 520px) {
+    .radio-footer-volume {
+        width: 26rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .radio-footer-volume {
+        width: 30rem;
+        margin: 0 2rem;
+    }
+}
+
+.radio-footer-volume-up {
+    margin-right: 2rem;
+}
+
+@media (min-width: 768px) {
+    .radio-footer-volume-up {
+        margin-right: 4rem;
+    }
+}
+
+.radio-footer-mute {}
