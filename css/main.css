@@ -204,8 +204,8 @@ main {
     max-width: 30rem;
     margin: auto;
     border: 2px solid var(--player-border);
-    padding: 0 1rem;
     position: relative;
+    height: 100%;
 }
 
 @media (min-width: 520px) {
@@ -327,8 +327,6 @@ main {
     }
 }
 
-.btn-play {}
-
 @media (min-width: 992px) {
     .btn-play {
         margin-right: 2rem;
@@ -342,8 +340,8 @@ main {
     }
 }
 
-.fa-play,
-.fa-stop {
+.btn-play ,
+.btn-stop {
     color: var(--main-color);
 }
 
@@ -990,7 +988,7 @@ main {
 }
 
 .btn-stop.disabled {
-   color: var(--color-disabled);
+    color: var(--color-disabled);
     opacity: .3;
 }
 
