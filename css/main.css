@@ -327,6 +327,11 @@ main {
     }
 }
 
+.btn-play {
+    margin-left: .5rem;
+    margin-right: 1.4rem;
+}
+
 @media (min-width: 992px) {
     .btn-play {
         margin-right: 2rem;
@@ -340,7 +345,7 @@ main {
     }
 }
 
-.btn-play ,
+.btn-play,
 .btn-stop {
     color: var(--main-color);
 }

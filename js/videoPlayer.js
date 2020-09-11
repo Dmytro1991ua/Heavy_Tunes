@@ -1,3 +1,5 @@
+import { addZero } from "./supportScript.js";
+
 export const videoPlayerInitialization = () => {
    const videoPlayer = document.querySelector(".video-container__player")
    const videoBtnPlay = document.querySelector(".btn-play")
@@ -39,11 +41,31 @@ export const videoPlayerInitialization = () => {
       changeIcon();
    };
 
+   //add zero to an element if is less than 10
+
 
    //event listeners
    videoPlayer.addEventListener("click", runVideoPlayer);
    videoBtnPlay.addEventListener("click", runVideoPlayer);
    videoBtnStop.addEventListener("click", stopVideoPlayer);
 
+   videoPlayer.addEventListener("timeupdate", () => { // listen to timeupdate event for changes on video time passed and video total time 
+      const currentVideoTime = videoPlayer.currentTime;
+      const videoDuration = videoPlayer.duration;
+
+      //round seconds and minutes for a current time of playing video
+      let minutesPassed = Math.floor(currentVideoTime / 60);
+      let secondsPassed = Math.floor(currentVideoTime % 60);
+
+      //round seconds and minutes for a total time of playing video
+      let minutesTotal = Math.floor(videoDuration / 60);
+      let secondsTotal = Math.floor(videoDuration % 60);
+
+      //change value of video progress bar (input)
+      videoProgressBar.value = (currentVideoTime / videoDuration) * 100;
+
+      videoTimePassed.textContent = `${addZero(minutesPassed)}:${addZero(secondsPassed)}`;
+      videoTimeTotal.textContent = `${addZero(minutesTotal)}:${addZero(secondsTotal)}`;
+   });  
   
 };
