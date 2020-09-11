@@ -169,21 +169,12 @@ main {
 /******** video player *********/
 .tab-content.show {
     display: flex;
-    animation: showItem .5s ease;
+    justify-content: center;
+    align-items: center;
 }
 
 .tab-content.hide {
     display: none;
-}
-
-@keyframes showItem {
-    0% {
-        transform: scale(0.6);
-    }
-
-    100% {
-        transform: scale(1);
-    }
 }
 
 @media (min-width: 768px) {
