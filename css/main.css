@@ -148,7 +148,13 @@ main {
 
 /******* Welcome heading *******/
 .welcome {
-    margin-bottom: 4rem;
+    margin-bottom: 9rem;
+}
+
+@media (min-width: 768px) {
+    .welcome {
+        margin-bottom: 5rem;
+    }
 }
 
 .welcome__heading {
@@ -246,6 +252,8 @@ main {
 .video-container__player {
     width: 100%;
     height: 18rem;
+    object-fit: fill;
+    cursor: pointer;
 }
 
 @media (min-width: 520px) {
@@ -349,8 +357,6 @@ main {
 .btn-stop {
     color: var(--main-color);
 }
-
-.btn-stop {}
 
 @media (min-width: 992px) {
     .btn-stop {
@@ -989,7 +995,7 @@ main {
 .btn-stop {
     border: none;
     background-color: transparent;
-    margin-right: 3rem;
+    margin-right: 1.4rem;
 }
 
 .btn-stop.disabled {

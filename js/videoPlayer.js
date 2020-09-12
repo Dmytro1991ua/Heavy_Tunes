@@ -41,7 +41,13 @@ export const videoPlayerInitialization = () => {
       changeIcon();
    };
 
-   //add zero to an element if is less than 10
+   /*const spacebarPressed = (event) => {
+      if (event.type === "keydown") {
+         if (event.which === 32 || event.keyCode === 32) {
+            runVideoPlayer();
+         }
+      }
+  } */
 
 
    //event listeners
@@ -66,6 +72,16 @@ export const videoPlayerInitialization = () => {
 
       videoTimePassed.textContent = `${addZero(minutesPassed)}:${addZero(secondsPassed)}`;
       videoTimeTotal.textContent = `${addZero(minutesTotal)}:${addZero(secondsTotal)}`;
-   });  
+   });
+   
+   videoProgressBar.addEventListener("input", () => { // listen to input event on a video progress bar in order to rewind a video
+      const videoDuration = videoPlayer.duration;
+      const inputValue = videoProgressBar.value;
+
+      videoPlayer.currentTime = (inputValue * videoDuration) / 100;
+   });
+
+   //videoPlayer.addEventListener("keydown", spacebarPressed);
+
   
 };
