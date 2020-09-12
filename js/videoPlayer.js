@@ -9,6 +9,7 @@ export const videoPlayerInitialization = () => {
    const videoTimeTotal = document.querySelector(".video-time-total")
    const videoVolume = document.querySelector(".video-container__video-volume")
    const volumeUp = document.querySelector(".volume-up")
+   const volumeDown = document.querySelector(".volume-down")
    const videoFullscreen = document.querySelector(".video-container__video-fullscreen")
 
    // change icon(from play to pause) while clicking on player itself
@@ -25,7 +26,7 @@ export const videoPlayerInitialization = () => {
 
    //run a video player
    const runVideoPlayer = () => {
-      if (videoPlayer.paused) {
+      if (videoPlayer.paused || videoPlayer.ended) {
          videoPlayer.play();
       } else {
          videoPlayer.pause();
@@ -40,6 +41,17 @@ export const videoPlayerInitialization = () => {
 
       changeIcon();
    };
+
+   // increase video volume
+   const increaseVolume = () => {
+      videoVolume.addEventListener("input", () => { // listen to an input event on video volume bar to change a volume of a video
+         videoPlayer.volume = videoVolume.value / 100;
+      });
+
+      videoPlayer.volume = .5; // make it 50% volume before video starts playing
+      videoVolume.value = videoPlayer.volume * 100;
+   };
+
 
    /*const spacebarPressed = (event) => {
       if (event.type === "keydown") {
@@ -83,5 +95,15 @@ export const videoPlayerInitialization = () => {
 
    //videoPlayer.addEventListener("keydown", spacebarPressed);
 
-  
+   videoFullscreen.addEventListener("click", () => { // making video player fullscreen on click  to a btn
+      videoPlayer.requestFullscreen();
+   });
+
+
+
+
+   // function calls
+   increaseVolume();
+
 };
+
