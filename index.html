@@ -68,17 +68,21 @@
                      <video class="video-container__player" src="video/bismark.mp4"
                         poster="img/play-button.svg"></video>
                      <div class="video-container__navigation">
-                        <button class="video-container__btns btn-play fa fa-play" data-title="Play (k)"></button>
-                        <button class="video-container__btns btn-stop fa fa-stop" data-title="Stop (k)"></button>
+                        <button class="video-container__btns icons btn-play fa fa-play" data-title="Play (k)"></button>
+                        <button class="video-container__btns icons btn-stop fa fa-stop" data-title="Stop (k)"></button>
                         <p class="video-container__video-timing video-time-passed">00:00</p>
                         <input type="range" class="video-container__video-progress" min="0" max="100" step="0.1"
                            value="0">
                         <p class="video-container__video-timing video-time-total">00:00</p>
                         <!--Elements of adjustment volume starts-->
-                        <span class="video-container__volume-icon volume-down fa fa-volume-down "></span>
-                        <input type="range" class="video-container__video-volume" min="0" max="100" step="1"
-                           value="100">
-                        <span class="video-container__volume-icon volume-up fa fa-volume-up"></span>
+                        <button class="video-container__volume-btn icons" data-title="Mute (m)">
+                           <span class="video-container__volume-icon hidden volume-mute fa fa-volume-off"></span>
+                           <span class="video-container__volume-icon hidden volume-down fa fa-volume-down "></span>
+                           <span class="video-container__volume-icon volume-up fa fa-volume-up"></span>
+                        </button>
+                        <input type="range" class="video-container__video-volume" min="0" max="100" step="0.01"
+                           value="1">
+                       
                         <!--Elements of adjustment volume ends-->
                         <p class="video-container__video-fullscreen video-icon fa fa-expand"></p>
                      </div>

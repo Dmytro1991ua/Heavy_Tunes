@@ -66,6 +66,10 @@ h1, h2, h3, p {
     margin: 0;
 }
 
+input {
+    transition: all 0.4s ease;
+}
+
 .wrapper {
     min-height: 100vh;
     display: -webkit-box;
@@ -393,7 +397,7 @@ main {
     position: relative;
 }
 
-.video-container__btns::after {
+.icons::after {
     content: attr(data-title);
     position: absolute;
     background-color: rgba(0, 0, 0, 0.6);
@@ -403,7 +407,7 @@ main {
     word-break: keep-all;
     white-space: pre;
     opacity: 0;
-    visibility: hidden;
+    visibility:hidden;
     transition: all .3s ease-in-out;
 }
 
@@ -417,7 +421,7 @@ main {
     top: -3.2rem;
 }
 
-.video-container__btns:hover::after {
+.icons:hover::after {
     opacity: 1;
     visibility: visible;
 }
@@ -503,6 +507,51 @@ main {
     }
 }
 
+.video-container__volume-btn {
+    font-size: 2rem;
+    border: none;
+    background-color: transparent;
+    color: var(--main-color);
+    margin-right: .5rem;
+}
+
+.video-container__volume-btn::after {
+    top: -3rem;
+    right: 4.4rem;
+}
+
+@media (min-width: 520px) {
+    .video-container__volume-btn::after {
+        top: -3rem;
+        right: 8.4rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .video-container__volume-btn::after {
+        top: -3rem;
+        right: 7.4rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .video-container__volume-btn::after {
+        top: -3rem;
+        right: 14.4rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .video-container__volume-btn::after {
+        top: -3rem;
+        right: 25.6rem;
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
 .video-container__volume-icon {
     margin-right: .3rem;
     cursor: pointer;
@@ -512,7 +561,7 @@ main {
 
 @media (min-width: 1400px) {
     .volume-down {
-        margin-right: 2rem;
+        margin-right: .5rem;
     }
 }
 
@@ -546,7 +595,7 @@ main {
 
 @media (min-width: 992px) {
     .volume-up {
-        margin-right: 2rem;
+        margin-right: .5rem;
     }
 }
 

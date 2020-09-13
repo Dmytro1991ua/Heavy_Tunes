@@ -9,12 +9,11 @@ export const videoPlayerInitialization = () => {
       videoTimeTotal = document.querySelector(".video-time-total"),
       videoVolume = document.querySelector(".video-container__video-volume"),
       videoVolumeIcons = document.querySelectorAll(".video-container__volume-icon"),
-      volumeBtn = document.querySelector(".video-container__volume-btn"),
       volumeUp = document.querySelector(".volume-up"),
       volumeDown = document.querySelector(".volume-down"),
       volumeMute = document.querySelector(".volume-mute"),
       videoFullscreen = document.querySelector(".video-container__video-fullscreen");
-      
+
    // change icon(from play to pause) while clicking on player itself
    const changeIcon = () => {
       if (videoPlayer.paused) {
@@ -84,26 +83,9 @@ export const videoPlayerInitialization = () => {
 
       videoPlayer.volume = .5; // make it 50% volume before video starts playing
       videoVolume.value = videoPlayer.volume * 100;
-   };
+   }; 
 
-   // update volume icon depends on a state of of video volume
-   const updateVolumeIcon = () => {
-      videoVolumeIcons.forEach(icon => {
-         icon.classList.add("hidden");
-      }); 
-
-      volumeBtn.setAttribute("data-title", "Mute (m)");
-      if (videoPlayer.muted || videoPlayer.volume === 0) {
-         volumeMute.classList.remove("hidden");
-         volumeBtn.setAttribute("data-title", "Unmute (m)");
-      } else if (videoPlayer.volume > 0 && videoPlayer.volume <= 0.5) {
-         volumeDown.classList.remove("hidden");
-      } else {
-         volumeUp.classList.remove("hidden");
-      }
-   };
-
-   //update videoVolume and disables the muted state if active
+    //update videoVolume and disables the muted state if active
    /*const updateVideoVolume = () => {
       if (videoPlayer.muted) {
          videoBtnPlay.muted = false;
@@ -134,10 +116,6 @@ export const videoPlayerInitialization = () => {
    videoFullscreen.addEventListener("click", () => { // making video player fullscreen on click  to a btn
       videoPlayer.requestFullscreen();
    });
-
-   videoPlayer.addEventListener("volumechange", updateVolumeIcon);
-
-   //videoVolume.addEventListener("input", updateVideoVolume);
 
 
    // function calls
