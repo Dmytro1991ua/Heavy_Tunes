@@ -31,6 +31,7 @@ body {
     color: var(--main-color);
     font-family: 'Josefin Sans', sans-serif;
     font-size: 1.6rem;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     overflow-x: hidden;
 }
@@ -67,7 +68,12 @@ h1, h2, h3, p {
 
 .wrapper {
     min-height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     overflow-x: hidden;
 }
@@ -99,6 +105,23 @@ main {
     color: var(--main-color);
 }
 
+@-webkit-keyframes pulse {
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+
+    50% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1);
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+
+    to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
 @keyframes pulse {
     from {
         -webkit-transform: scale3d(1, 1, 1);
@@ -122,8 +145,14 @@ main {
 }
 
 .tabs-filters__body {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 }
 
@@ -134,6 +163,8 @@ main {
     padding: 1rem 2.3rem;
     margin-right: 1rem;
     border-radius: 5px;
+    -webkit-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
 }
 
@@ -169,13 +200,20 @@ main {
 .image-cover__img {
     margin-top: 5rem;
     margin: auto;
+    -webkit-animation: pulse 1.3s ease-out 1s infinite;
     animation: pulse 1.3s ease-out 1s infinite;
 }
 
 /******** video player *********/
 .tab-content.show {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 }
 
@@ -194,8 +232,14 @@ main {
     }
 
     .tab-content__body {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
         justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
     }
 }
@@ -207,7 +251,7 @@ main {
 }
 
 .video-container {
-    max-width: 30rem;
+    max-width: 35rem;
     margin: auto;
     border: 2px solid var(--player-border);
     position: relative;
@@ -222,6 +266,8 @@ main {
 
 @media (min-width: 768px) {
     .video-container {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 1 60%;
         flex: 0 1 60%;
         margin-right: 1.5rem;
     }
@@ -252,6 +298,7 @@ main {
 .video-container__player {
     width: 100%;
     height: 18rem;
+    -o-object-fit: fill;
     object-fit: fill;
     cursor: pointer;
 }
@@ -285,8 +332,12 @@ main {
     position: absolute;
     bottom: -17%;
     left: -2px;
-    width: 101.4%;
+    width: 101.2%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     background-color: var(--player-nav);
     padding: .8rem .8rem;
@@ -318,8 +369,8 @@ main {
 
 @media (min-width: 2000px) {
     .video-container__navigation {
-        bottom: -8%;
-        width: 100.6%;
+        bottom: -7%;
+        width: 100.5%;
     }
 }
 
@@ -327,6 +378,7 @@ main {
     border: none;
     background-color: transparent;
     margin-right: .8rem;
+    cursor: pointer;
 }
 
 @media (min-width: 992px) {
@@ -338,6 +390,36 @@ main {
 .btn-play {
     margin-left: .5rem;
     margin-right: 1.4rem;
+    position: relative;
+}
+
+.video-container__btns::after {
+    content: attr(data-title);
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-weight: bold;
+    padding: 4px 6px;
+    word-break: keep-all;
+    white-space: pre;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s ease-in-out;
+}
+
+.btn-play::after {
+    right: -3.9rem;
+    top: -4rem;
+}
+
+.btn-stop::after {
+    left: 2rem;
+    top: -3.2rem;
+}
+
+.video-container__btns:hover::after {
+    opacity: 1;
+    visibility: visible;
 }
 
 @media (min-width: 992px) {
@@ -350,6 +432,11 @@ main {
     .btn-play {
         margin-right: 5rem;
         margin-left: 2rem;
+    }
+
+    .btn-stop::after {
+        left: 7rem;
+        top: -3.2rem;
     }
 }
 
@@ -385,6 +472,7 @@ main {
 .video-container__video-progress {
     width: 15%;
     margin-right: .6rem;
+    cursor: pointer;
 }
 
 @media (min-width: 520px) {
@@ -417,6 +505,7 @@ main {
 
 .video-container__volume-icon {
     margin-right: .3rem;
+    cursor: pointer;
 }
 
 .volume-down {}
@@ -427,11 +516,10 @@ main {
     }
 }
 
-.fa-volume-down {}
-
 .video-container__video-volume {
     width: 15%;
     margin-right: .3rem;
+    cursor: pointer;
 }
 
 @media (min-width: 520px) {
@@ -477,16 +565,25 @@ main {
 
 @media (min-width: 768px) {
     .video-container__description {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 1 40%;
         flex: 0 1 40%;
         margin-top: 0rem;
     }
 }
 
 .video-container__description-body {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
     align-items: stretch;
-    padding: 2rem 2rem;
+    padding: 2rem 0rem;
 }
 
 @media (min-width: 768px) {
@@ -498,6 +595,8 @@ main {
 .video-container__description-title {
     font-size: calc(25px + 25 * ((100vw - 320px) / (1920 - 320)));
     font-family: 'Dancing Script', cursive;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
     align-self: center;
     letter-spacing: .3rem;
     color: var(--logo-clr);
@@ -506,9 +605,18 @@ main {
 }
 
 .video-container__description-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
     align-items: flex-start;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     background-color: var(--color-midnight-blue);
     padding: 2rem 2rem;
@@ -547,10 +655,14 @@ main {
 .video-container__description-item {
     font-size: calc(20px + 8 * ((100vw - 320px) / (1920 - 320)));
     margin-bottom: 1rem;
+    -webkit-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
 }
 
 .video-container__description-item:hover {
+    -webkit-transform: scale(1.04);
+    -ms-transform: scale(1.04);
     transform: scale(1.04);
 }
 
@@ -581,19 +693,29 @@ main {
 
 @media (min-width: 768px) {
     .audio-player__body {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
         justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
         min-height: 25rem;
     }
 }
 
 .audio-player__image-cover {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 50%;
     flex: 0 1 50%;
 }
 
 @media (min-width: 768px) {
     .audio-payer__audio-info {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 1 40%;
         flex: 0 1 40%;
     }
 }
@@ -604,11 +726,15 @@ main {
 }
 
 .audio-payer__audio-info {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 50%;
     flex: 0 1 50%;
 }
 
 @media (min-width: 768px) {
     .audio-payer__audio-info {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 1 60%;
         flex: 0 1 60%;
     }
 }
@@ -646,7 +772,11 @@ main {
     background-color: var(--player-nav);
     width: 100%;
     height: 5rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     padding: 0 1rem;
     z-index: 10;
@@ -659,8 +789,14 @@ main {
 }
 
 .audio-footer__navigation {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
 }
 
@@ -752,6 +888,7 @@ main {
     width: 0%;
     height: 100%;
     -webkit-transition: width 0.1s linear;
+    -o-transition: width 0.1s linear;
     transition: width 0.1s linear;
 }
 
@@ -794,8 +931,14 @@ main {
     }
 
     .radio-player__body {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
         justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
     }
 }
@@ -829,6 +972,8 @@ main {
 
 @media (min-width: 768px) {
     .radio-player__image-cover {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 1 29%;
         flex: 0 1 29%;
         margin-bottom: 0rem;
     }
@@ -836,6 +981,8 @@ main {
 
 @media (min-width: 992px) {
     .radio-player__image-cover {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 1 50%;
         flex: 0 1 50%;
     }
 }
@@ -885,9 +1032,16 @@ main {
 }
 
 .radio-stations__list {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 }
 
@@ -932,9 +1086,18 @@ main {
 }
 
 .radio-stations__label {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     position: relative;
     z-index: 9;
@@ -947,6 +1110,8 @@ main {
     height: 14rem;
     border: 5px solid transparent;
     border-radius: 50%;
+    -webkit-transition: border .25s linear;
+    -o-transition: border .25s linear;
     transition: border .25s linear;
     margin-bottom: .9rem;
 }
@@ -954,6 +1119,7 @@ main {
 .radio-stations__img {
     width: 100%;
     height: 100%;
+    -o-object-fit: fill;
     object-fit: fill;
     border-radius: 50%;
 }
@@ -971,8 +1137,14 @@ main {
 .radio-footer {}
 
 .radio-footer__navigation {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     font-size: 2.5rem;
     cursor: pointer;
