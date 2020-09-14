@@ -670,8 +670,7 @@ main {
     background-color: var(--color-midnight-blue);
     padding: 2rem 2rem;
     border-radius: 1rem;
-    max-width: 30rem;
-    margin: 0 auto;
+    max-width: 35rem;
 }
 
 @media (min-width: 520px) {

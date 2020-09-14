@@ -103,24 +103,6 @@ export const videoPlayerInitialization = () => {
       }
    };
 
-   //update videoVolume and disables the muted state if active
-   /*const updateVideoVolume = () => {
-      if (videoPlayer.muted) {
-         videoBtnPlay.muted = false;
-      }
-
-      videoPlayer.volume = videoVolume.value;
-   }/*
-
-   /*const spacebarPressed = (event) => {
-      if (event.type === "keydown") {
-         if (event.which === 32 || event.keyCode === 32) {
-            runVideoPlayer();
-         }
-      }
-  } */
-
-
    //event listeners
    videoPlayer.addEventListener("click", runVideoPlayer);
    videoBtnPlay.addEventListener("click", runVideoPlayer);
@@ -137,7 +119,6 @@ export const videoPlayerInitialization = () => {
 
    videoPlayer.addEventListener("volumechange", updateVolumeIcon);
 
-   //videoVolume.addEventListener("input", updateVideoVolume);
 
 
    // function calls
