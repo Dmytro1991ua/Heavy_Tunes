@@ -6,7 +6,7 @@
     --logo-clr: rgb(255, 0, 0);
     --color-black: #000000;
     --player-border: #fffafa;
-    --player-nav: #3a423b;
+    --player-nav: #000000;
     --color-midnight-blue: #191970;
     --color-disabled: #aaa;
 }
@@ -305,6 +305,7 @@ main {
     -o-object-fit: fill;
     object-fit: fill;
     cursor: pointer;
+    position: relative;
 }
 
 @media (min-width: 520px) {
@@ -407,7 +408,7 @@ main {
     word-break: keep-all;
     white-space: pre;
     opacity: 0;
-    visibility:hidden;
+    visibility: hidden;
     transition: all .3s ease-in-out;
 }
 
@@ -599,13 +600,35 @@ main {
     }
 }
 
-.fa-volume-up {}
-
 .video-container__video-fullscreen {}
 
 .video-icon {}
 
-.fa-expand {}
+/****** Animation (change an icon) for a play and pause a video *****/
+.video-playback-animation {
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -40px;
+    margin-top: -40px;
+    width: 80px;
+    height: 80px;
+    border-radius: 80px;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+}
+
+.video-playback-animation__icons {}
+
+.video-playback-animation__icon {}
+
+.playback-play {}
+
+.playback-pause {}
 
 /****** Video player description items *****/
 .video-container__description {

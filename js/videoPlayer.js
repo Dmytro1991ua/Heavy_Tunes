@@ -2,6 +2,7 @@ import { addZero } from "./supportScript.js";
 
 export const videoPlayerInitialization = () => {
    const videoPlayer = document.querySelector(".video-container__player"),
+      videoContainerNavigation = document.querySelector(".video-container__navigation"),
       videoBtnPlay = document.querySelector(".btn-play"),
       videoBtnStop = document.querySelector(".btn-stop"),
       videoTimePassed = document.querySelector(".video-time-passed"),
@@ -13,19 +14,33 @@ export const videoPlayerInitialization = () => {
       volumeUp = document.querySelector(".volume-up"),
       volumeDown = document.querySelector(".volume-down"),
       volumeMute = document.querySelector(".volume-mute"),
-      videoFullscreen = document.querySelector(".video-container__video-fullscreen");
-      
+      videoFullscreen = document.querySelector(".video-container__video-fullscreen"),
+      videoPlaybackAnimation = document.querySelector(".video-playback-animation"),
+      videoPlaybackAnimationIconPlay = document.querySelector(".playback-play"),
+      videoPlaybackAnimationIconPause = document.querySelector(".playback-pause"); 
+   
+
+   const videoWorks = !!document.createElement('video').canPlayType;
+   if (videoWorks) {
+      videoPlayer.controls = false;
+      videoContainerNavigation.classList.remove('hidden');
+   }
+
    // change icon(from play to pause) while clicking on player itself
    const changeIcon = () => {
       if (videoPlayer.paused) {
          videoBtnPlay.classList.remove("fa-pause");
          videoBtnPlay.classList.add("fa-play");
          videoBtnPlay.setAttribute("data-title", "Play (k)"); //  set tooltip on hover for play and pause btn
+         videoPlaybackAnimationIconPlay.classList.add("hidden"); // add and remove hidden class on playback animation icons while clicking the btns play or pause
+         videoPlaybackAnimationIconPause.classList.remove("hidden");
 
       } else {
          videoBtnPlay.classList.add("fa-pause");
          videoBtnPlay.classList.remove("fa-play");
          videoBtnPlay.setAttribute("data-title", "Pause (k)");
+         videoPlaybackAnimationIconPause.classList.add("hidden");
+         videoPlaybackAnimationIconPlay.classList.remove("hidden");
       }
    };
 
@@ -90,7 +105,7 @@ export const videoPlayerInitialization = () => {
    const updateVolumeIcon = () => {
       videoVolumeIcons.forEach(icon => {
          icon.classList.add("hidden");
-      }); 
+      });
 
       volumeBtn.setAttribute("data-title", "Mute (m)");
       if (videoPlayer.muted || videoPlayer.volume === 0) {
@@ -105,7 +120,7 @@ export const videoPlayerInitialization = () => {
 
    // mute or unmute a video by clicking on the volume btn
    const toggleVolumeBtn = () => {
-      videoPlayer.muted = !videoPlayer.muted;
+      videoPlayer.muted = !videoPlayer.muted; // toggle mute state of video (if ture => false and vise versa)
 
       if (videoPlayer.muted) {
          videoVolume.setAttribute("data-volume", videoVolume.value);
@@ -113,6 +128,22 @@ export const videoPlayerInitialization = () => {
       } else {
          videoVolume.value = videoVolume.dataset.volume;
       }
+   };
+
+   // animatePlayback  to animate play and pause btn on click to a video player
+   const animatePlayback = () => {
+      videoPlaybackAnimation.animate([ // animate method takes in an array of keyframe objects and an options object (can control the duration of the animation amongst other things.)
+         {
+            opacity: 1,
+            transform: "scale(1)",
+         },
+         {
+            opacity: 0,
+            transform: "scale(1.3)",
+         }], {
+         duration: 500,
+      });
+
    };
 
    //event listeners
@@ -131,6 +162,8 @@ export const videoPlayerInitialization = () => {
 
    videoPlayer.addEventListener("volumechange", updateVolumeIcon);
    volumeBtn.addEventListener("click", toggleVolumeBtn);
+   videoPlayer.addEventListener("click", animatePlayback );
+
 
 
 

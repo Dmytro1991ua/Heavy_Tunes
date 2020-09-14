@@ -65,9 +65,17 @@
             <div class="container">
                <div class="tab-content__body">
                   <div class="video-container">
-                     <video class="video-container__player" src="video/bismark.mp4"
+                     <video controls class="video-container__player" src="video/bismark.mp4"
                         poster="img/play-button.svg"></video>
-                     <div class="video-container__navigation">
+                     <!--playback animation starts-->
+                     <div class="video-playback-animation">
+                        <div class="video-playback-animation__icons">
+                           <span class="video-playback-animation__icon hidden playback-play fa fa-play"></span>
+                           <span class="video-playback-animation__icon  playback-pause fa fa-pause"></span>
+                        </div>
+                     </div>
+                     <!--playback animation ends-->
+                     <div class="video-container__navigation hidden">
                         <button class="video-container__btns icons btn-play fa fa-play" data-title="Play (k)"></button>
                         <button class="video-container__btns icons btn-stop fa fa-stop" data-title="Stop (k)"></button>
                         <p class="video-container__video-timing video-time-passed">00:00</p>
@@ -82,7 +90,7 @@
                         </button>
                         <input type="range" class="video-container__video-volume" min="0" max="100" step="0.01"
                            value="1">
-                       
+
                         <!--Elements of adjustment volume ends-->
                         <p class="video-container__video-fullscreen video-icon fa fa-expand"></p>
                      </div>
@@ -94,8 +102,8 @@
                               class="video-container__description-title">Sabaton</a>
                            <a href="https://www.sabaton.net/" target="_blank"
                               class="video-container__description-item"><span>name:</span>Bismarck</a>
-                              <a href="https://www.sabaton.net/" target="_blank"
-                                 class="video-container__description-item"><span>year:</span>2019</a>
+                           <a href="https://www.sabaton.net/" target="_blank"
+                              class="video-container__description-item"><span>year:</span>2019</a>
                            <a href="https://www.sabaton.net/" target="_blank"
                               class="video-container__description-item"><span>album:</span>Standalone single</a>
                            <a href="https://www.sabaton.net/" target="_blank"
@@ -105,6 +113,7 @@
                         </ul>
                      </div>
                   </div>
+
                </div>
             </div>
          </article>
