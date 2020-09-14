@@ -6,6 +6,7 @@ As a huge fan of Hard Rock and heavy metal and to be totally honest with any off
 
 ##### Heavy Tunes is a pretty simple and light version of iTunes which basically dedicated to the music of Gods, which is Hard Rock and Heavy Metal by the way. The project includes a custom video, audio, and radio players. 
 
+
 Stack of technologies which were used to develop a particular project: 
 #### HTML/HTML5, CSS3, BEM, JS, Responsive Web Design, Mobile First Approach.
 
