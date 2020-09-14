@@ -103,6 +103,18 @@ export const videoPlayerInitialization = () => {
       }
    };
 
+   // mute or unmute a video by clicking on the volume btn
+   const toggleVolumeBtn = () => {
+      videoPlayer.muted = !videoPlayer.muted;
+
+      if (videoPlayer.muted) {
+         videoVolume.setAttribute("data-volume", videoVolume.value);
+         videoVolume.value = 0
+      } else {
+         videoVolume.value = videoVolume.dataset.volume;
+      }
+   };
+
    //event listeners
    videoPlayer.addEventListener("click", runVideoPlayer);
    videoBtnPlay.addEventListener("click", runVideoPlayer);
@@ -118,6 +130,7 @@ export const videoPlayerInitialization = () => {
    });
 
    videoPlayer.addEventListener("volumechange", updateVolumeIcon);
+   volumeBtn.addEventListener("click", toggleVolumeBtn);
 
 
 
