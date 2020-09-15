@@ -17,8 +17,8 @@ export const videoPlayerInitialization = () => {
       videoFullscreen = document.querySelector(".video-container__video-fullscreen"),
       videoPlaybackAnimation = document.querySelector(".video-playback-animation"),
       videoPlaybackAnimationIconPlay = document.querySelector(".playback-play"),
-      videoPlaybackAnimationIconPause = document.querySelector(".playback-pause"); 
-   
+      videoPlaybackAnimationIconPause = document.querySelector(".playback-pause");
+
 
    const videoWorks = !!document.createElement('video').canPlayType;
    if (videoWorks) {
@@ -130,7 +130,7 @@ export const videoPlayerInitialization = () => {
       }
    };
 
-   // animatePlayback  to animate play and pause btn on click to a video player
+   // animatePlayback  to animate play and pause btns on click to a video player
    const animatePlayback = () => {
       videoPlaybackAnimation.animate([ // animate method takes in an array of keyframe objects and an options object (can control the duration of the animation amongst other things.)
          {
@@ -146,25 +146,47 @@ export const videoPlayerInitialization = () => {
 
    };
 
+   // toggle a fullscreen  state of the video
+   const toggleFullScreen = () => {
+      if (
+         document.fullscreenElement || 
+         document.webkitFullscreenElement || 
+         document.mozFullScreenElement ||
+         document.msFullscreenElement 
+      ) { // If the browser is currently in fullscreen mode
+         document.exitFullscreen; // exit fullscreen
+      } else {
+         videoPlayer.requestFullscreen(); // add fullscreen to a video player 
+      }
+   };
+
+   // Detect press of spacebar or enter keys when play or pause video player
+   const detectKeypress = (event) => {
+      if (event.keyCode === 32 || event.keyCode === 13) {
+         runVideoPlayer();
+      } else {
+         return;
+      }
+   };
+
+
    //event listeners
+
+   // play/stop video
    videoPlayer.addEventListener("click", runVideoPlayer);
    videoBtnPlay.addEventListener("click", runVideoPlayer);
    videoBtnStop.addEventListener("click", stopVideoPlayer);
 
+   volumeBtn.addEventListener("click", toggleVolumeBtn);
+   videoPlayer.addEventListener("click", animatePlayback);
+   videoFullscreen.addEventListener("click", toggleFullScreen) // making video player fullscreen on click  to a btn
+
    videoPlayer.addEventListener("timeupdate", updateVideoTime) // listen to timeupdate event for changes on video time passed and video total time 
    videoProgressBar.addEventListener("input", rewindVideo) // listen to input event on a video progress bar in order to rewind a video
 
-   //videoPlayer.addEventListener("keydown", spacebarPressed);
-
-   videoFullscreen.addEventListener("click", () => { // making video player fullscreen on click  to a btn
-      videoPlayer.requestFullscreen();
-   });
-
    videoPlayer.addEventListener("volumechange", updateVolumeIcon);
-   volumeBtn.addEventListener("click", toggleVolumeBtn);
-   videoPlayer.addEventListener("click", animatePlayback );
-
-
+   
+   window.addEventListener("keydown", detectKeypress);
 
 
    // function calls

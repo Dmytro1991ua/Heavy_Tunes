@@ -600,7 +600,9 @@ main {
     }
 }
 
-.video-container__video-fullscreen {}
+.video-container__video-fullscreen {
+    cursor: pointer;
+}
 
 .video-icon {}
 
