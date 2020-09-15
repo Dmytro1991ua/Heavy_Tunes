@@ -601,7 +601,10 @@ main {
 }
 
 .video-container__video-fullscreen {
+    border: none;
+    background-color: transparent;
     cursor: pointer;
+    color: var(--main-color);
 }
 
 .video-icon {}

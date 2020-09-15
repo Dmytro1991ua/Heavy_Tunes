@@ -22,7 +22,7 @@ export const videoPlayerInitialization = () => {
 
    const videoWorks = !!document.createElement('video').canPlayType;
    if (videoWorks) {
-      videoPlayer.controls = false;
+      videoPlayer.controls = false; // hide original video player's controls
       videoContainerNavigation.classList.remove('hidden');
    }
 
@@ -149,23 +149,33 @@ export const videoPlayerInitialization = () => {
    // toggle a fullscreen  state of the video
    const toggleFullScreen = () => {
       if (
-         document.fullscreenElement || 
-         document.webkitFullscreenElement || 
+         document.fullscreenElement ||
+         document.webkitFullscreenElement ||
          document.mozFullScreenElement ||
-         document.msFullscreenElement 
+         document.msFullscreenElement
       ) { // If the browser is currently in fullscreen mode
          document.exitFullscreen; // exit fullscreen
       } else {
          videoPlayer.requestFullscreen(); // add fullscreen to a video player 
-      }
    };
 
-   // Detect press of spacebar or enter keys when play or pause video player
+   // Detect press of spacebar or enter keys when play or pause video player and ArrowLeft and ArrowRight to rewind a vido for 5s
    const detectKeypress = (event) => {
-      if (event.keyCode === 32 || event.keyCode === 13) {
-         runVideoPlayer();
-      } else {
-         return;
+      switch (event.keyCode) {
+         case 32: // spacebar key
+            runVideoPlayer();
+            break;
+         case 13: // enter key
+            runVideoPlayer();
+            break;
+         case 37: // Key left(Arrow left to rewind(5s) video back by pressing a key)
+            videoPlayer.currentTime -= 5;
+            break;
+         case 39: // Key right(Arrow Right to rewind video forward by pressing a key)
+            videoPlayer.currentTime += 5;
+            break;
+         default:
+            return;
       }
    };
 
@@ -185,7 +195,7 @@ export const videoPlayerInitialization = () => {
    videoProgressBar.addEventListener("input", rewindVideo) // listen to input event on a video progress bar in order to rewind a video
 
    videoPlayer.addEventListener("volumechange", updateVolumeIcon);
-   
+
    window.addEventListener("keydown", detectKeypress);
 
 
