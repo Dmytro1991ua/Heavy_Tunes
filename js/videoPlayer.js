@@ -157,8 +157,8 @@ export const videoPlayerInitialization = () => {
          document.exitFullscreen; // exit fullscreen
       } else {
          videoPlayer.requestFullscreen(); // add fullscreen to a video player 
+      }
    };
-
    // Detect press of spacebar or enter keys when play or pause video player and ArrowLeft and ArrowRight to rewind a vido for 5s
    const detectKeypress = (event) => {
       switch (event.keyCode) {
@@ -202,5 +202,6 @@ export const videoPlayerInitialization = () => {
    // function calls
    increaseVolume();
 
-};
+}
+
 
