@@ -20,7 +20,7 @@ export const videoPlayerInitialization = () => {
       videoPlaybackAnimationIconPause = document.querySelector(".playback-pause");
 
 
-   const videoWorks = !!document.createElement('video').canPlayType;
+   const videoWorks = !!document.createElement('video').canPlayType; //  detect support for a video format in the browser
    if (videoWorks) {
       videoPlayer.controls = false; // hide original video player's controls
       videoContainerNavigation.classList.remove('hidden');
@@ -179,6 +179,26 @@ export const videoPlayerInitialization = () => {
       }
    };
 
+   // hide video control features when they are not in use 
+   const hideVideoControls = () => {
+      if (videoPlayer.paused) { // if the video is paused, the controls must remain visible
+         return;
+      }
+      videoContainerNavigation.classList.add("hide");
+
+   };
+
+   // showControls displays the video controls
+   const showVideoControls = () => {
+      videoContainerNavigation.classList.remove("hide");
+   };
+
+   // fixing a bug when a video player in running and we press a btn to change a tab content we need to stop running video
+   videoPlayerInitialization.stop = () => {
+      if (!videoPlayer.paused) {
+         stopVideoPlayer();
+      } 
+   } 
 
    //event listeners
 
@@ -197,6 +217,12 @@ export const videoPlayerInitialization = () => {
    videoPlayer.addEventListener("volumechange", updateVolumeIcon);
 
    window.addEventListener("keydown", detectKeypress);
+
+   //events to hide and show video controls
+   videoPlayer.addEventListener('mouseenter', showVideoControls);
+   videoPlayer.addEventListener('mouseleave', hideVideoControls);
+   videoContainerNavigation.addEventListener('mouseenter', showVideoControls);
+   videoContainerNavigation.addEventListener('mouseleave', hideVideoControls);
 
 
    // function calls

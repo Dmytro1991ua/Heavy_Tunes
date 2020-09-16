@@ -351,6 +351,11 @@ main {
     border-bottom: 2px solid var(--player-border);
 }
 
+.video-container__navigation.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
 @media (min-width: 520px) {
     .video-container__navigation {
         bottom: -13%;
@@ -402,6 +407,7 @@ main {
     content: attr(data-title);
     position: absolute;
     background-color: rgba(0, 0, 0, 0.6);
+    font-size: 2rem;
     color: #fff;
     font-weight: bold;
     padding: 4px 6px;
@@ -413,8 +419,8 @@ main {
 }
 
 .btn-play::after {
-    right: -3.9rem;
-    top: -4rem;
+    right: -6.5rem;
+    top: -4.3rem;
 }
 
 .btn-stop::after {
@@ -607,6 +613,11 @@ main {
     color: var(--main-color);
 }
 
+.video-container__video-fullscreen::after {
+    top: -3rem;
+    right: 0.5rem;
+}
+
 .video-icon {}
 
 /****** Animation (change an icon) for a play and pause a video *****/
@@ -626,14 +637,6 @@ main {
     align-items: center;
     opacity: 0;
 }
-
-.video-playback-animation__icons {}
-
-.video-playback-animation__icon {}
-
-.playback-play {}
-
-.playback-pause {}
 
 /****** Video player description items *****/
 .video-container__description {

@@ -11,7 +11,7 @@ const showContentOnClick = () => {
       tabsContent = document.querySelectorAll(".tab-content"),
       welcomeTitle = document.querySelector(".welcome__heading"),
       welcomeImage = document.querySelector(".image-cover__img");
-   
+
    //function remove active class on filter btns
    const deactivationPlayerBtn = () => {
       //remove welcoming text and image on click to a tab link
@@ -25,6 +25,8 @@ const showContentOnClick = () => {
          tabsContent.classList.remove("show");
          tabsContent.classList.add("hide");
       });
+
+      videoPlayerInitialization.stop(); // stop running video player when we change a tab content by pressing a tab link
    };
 
    const showTabContent = () => {
