@@ -138,15 +138,22 @@
             <footer class="audio-footer fixed-footer">
                <div class="audio-footer__navigation">
                   <div class="audio-footer__btns">
-                     <button class="audio-footer__btn audio-footer__btn--prev fa fa-step-backward"></button>
-                     <button class="audio-footer__btn audio-footer__btn--play fa fa-play"></button>
-                     <button class="audio-footer__btn audio-footer__btn--next fa fa-step-forward"></button>
+                     <button class="audio-footer__btn  icons audio-footer__btn--prev fa fa-step-backward" data-title="Prev (p)"></button>
+                     <button class="audio-footer__btn  icons audio-footer__btn--play fa fa-play" data-title="Play (k)"></button>
+                     <button class="audio-footer__btn  icons audio-footer__btn--next fa fa-step-forward" data-title="Next (n)"></button>
                   </div>
                   <span class="audio-footer__audio-time audio-footer__audio-time--passed">00:00</span>
                   <div class="audio-footer__audio-progress">
                      <div class="audio-footer__audio-progress-timing"></div>
                   </div>
                   <span class="audio-footer__audio-time audio-footer__audio-time--total">00:00</span>
+                  <!--Elements of adjustment volume starts-->
+                  <button class="audio-footer__volume-btn icons" data-title="Mute (m)">
+                     <span class="audio-footer__volume-icon hidden volume-mute fa fa-volume-off"></span>
+                     <span class="audio-footer__volume-icon hidden volume-down fa fa-volume-down "></span>
+                     <span class="audio-footer__volume-icon volume-up fa fa-volume-up"></span>
+                  </button>
+                  <input type="range" class="audio-footer__video-volume" min="0" max="100" step="0.01" value="1">
                </div>
             </footer>
          </article>
