@@ -1095,6 +1095,7 @@ main {
 
 .audio-footer__video-volume {
     width: 20%;
+    cursor: pointer;
 }
 
 @media (min-width: 992px) {
