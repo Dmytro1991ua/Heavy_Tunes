@@ -63,7 +63,7 @@ export const videoPlayerInitialization = () => {
       changeIcon();
    };
 
-   // updated vido time passed and video time total
+   // updated video time passed and video time total
    const updateVideoTime = () => {
       const currentVideoTime = videoPlayer.currentTime;
       const videoDuration = videoPlayer.duration;

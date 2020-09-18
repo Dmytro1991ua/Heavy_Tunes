@@ -776,17 +776,22 @@ main {
     margin-bottom: 2rem;
 }
 
+.audio-player__body {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
 @media (min-width: 768px) {
     .audio-player__body {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
+        flex-direction: row;
         min-height: 25rem;
     }
 }
@@ -881,7 +886,7 @@ main {
 
 @media (min-width: 768px) {
     .fixed-footer {
-        height: 8.3rem;
+        height: 6.3rem;
     }
 }
 

@@ -69,6 +69,22 @@ export const audioPlayerInitialization = () => {
     // setTimeout(updateTime, 500);
    };
 
+
+   // play track next track when the precious one ended;
+   const runNextTrack = () => {
+      nextTrack();
+      audioPlayerSong.play();
+   };
+
+   //update audio progress bar, in particularly time thats passed and total time
+   /*const updateAudioProggressBar = () => {
+      const trackCurrentTime = audioPlayerSong.currentTime;
+      const trackDuration = audioPlayerSong.duration;
+      
+      const progressbarValue = (trackCurrentTime / trackDuration) * 100;
+
+   };*/
+
    //event listeners
    audioPlayerNavigation.addEventListener("click", (event) => {
       const target = event.target;
@@ -92,4 +108,8 @@ export const audioPlayerInitialization = () => {
         nextTrack();
       }
    });
+
+   audioPlayerSong.addEventListener("ended", runNextTrack);
+   //audioPlayerSong.addEventListener("timeupdate", updateAudioProggressBar);
+
 };
