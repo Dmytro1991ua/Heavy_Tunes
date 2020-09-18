@@ -798,9 +798,10 @@ main {
 
 .audio-player__image-cover {
     -webkit-box-flex: 0;
-    margin-bottom: 4rem;
+    margin-bottom: 2.5rem;
     width: 20rem;
     height: 20rem;
+    transition: all .4s ease-in-out;
 }
 
 @media (min-width: 768px) {
@@ -844,6 +845,7 @@ main {
 .audio-player__audio-title {
     font-size: calc(15px + 20 * ((100vw - 320px) / (1920 - 320)));
     text-align: center;
+    transition: all .4s ease-in-out;
 }
 
 .audio-player__audio-title span {

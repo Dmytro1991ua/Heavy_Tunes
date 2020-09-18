@@ -2,7 +2,6 @@ import { addZero } from "./supportScript.js";
 
 export const audioPlayerInitialization = () => {
    const audio = document.querySelector(".audio"), // container for all audio player elements
-      audioPlayer = document.querySelector(".audio-player"),
       audioPlayerCover = document.querySelector(".audio-player__img"),
       audioPlayerAudioTitle = document.querySelector(".audio-player__audio-title"),
       audioPlayerSong = document.querySelector(".audio-player__song"),
@@ -19,6 +18,7 @@ export const audioPlayerInitialization = () => {
       aduioPlayerVolumeBar = document.querySelector(".audio-footer__audio-volume");
 
    const playListArray = ["Hatebreed - Destroy Everything", "Metallica - One", "BFMV - Piece of Me", "Sabaton - Uprising"]; // an array of playlist sinc there is no backend in thsi project
+
    let trackIndex = 0; // variable holds an index of currently playing track
 
    // play and pause audio track and change tooltip depends on a state of track
@@ -95,7 +95,16 @@ export const audioPlayerInitialization = () => {
       let secondsTotal = Math.floor(trackDuration % 60) || "0";
 
       audioPlayerTimePassed.textContent = `${addZero(minutesPassed)}:${addZero(secondsPassed)}`;
-      audioPlayerTotalTime .textContent = `${addZero(minutesTotal)}:${addZero(secondsTotal)}`;
+      audioPlayerTotalTime.textContent = `${addZero(minutesTotal)}:${addZero(secondsTotal)}`;
+   };
+
+   //rewind audio track by using audio progress bar (input)
+   const rewindAudioTrack = (event) => {
+      const clickCoordinates = event.offsetX; // get a coordinates where was a click on progress bar
+      const progressBarAllWidth = audioPlayerProgressBar.clientWidth; // get full widt of a progress bar 
+
+      const progress = (clickCoordinates / progressBarAllWidth) * audioPlayerSong.duration;
+      audioPlayerSong.currentTime = progress; 
    };
 
    //event listeners
@@ -124,5 +133,7 @@ export const audioPlayerInitialization = () => {
 
    audioPlayerSong.addEventListener("ended", runNextTrack);
    audioPlayerSong.addEventListener("timeupdate", updateAudioProggressBar);
+   audioPlayerProgressBar.addEventListener("click", rewindAudioTrack);
+
 
 };

@@ -161,7 +161,7 @@ export const videoPlayerInitialization = () => {
    };
    // Detect press of spacebar or enter keys when play or pause video player and ArrowLeft and ArrowRight to rewind a vido for 5s
    const detectKeypress = (event) => {
-      switch (event.keyCode) {
+      switch (event.code) {
          case 32: // spacebar key
             runVideoPlayer();
             break;
