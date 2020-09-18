@@ -1,3 +1,5 @@
+import { addZero } from "./supportScript.js";
+
 export const audioPlayerInitialization = () => {
    const audio = document.querySelector(".audio"), // container for all audio player elements
       audioPlayer = document.querySelector(".audio-player"),
@@ -6,6 +8,7 @@ export const audioPlayerInitialization = () => {
       audioPlayerSong = document.querySelector(".audio-player__song"),
       audioPlayerNavigation = document.querySelector(".audio-footer__navigation"),
       audioPlayerBtnPlay = document.querySelector(".audio-footer__btn--play"),
+      audioProgressBarTiming = document.querySelector(".audio-footer__audio-progress-timing"),
       audioPlayerTimePassed = document.querySelector(".audio-footer__audio-time--passed"),
       audioPlayerProgressBar = document.querySelector(".audio-footer__audio-progress"),
       audioPlayerTotalTime = document.querySelector(".audio-footer__audio-time--total"),
@@ -77,13 +80,23 @@ export const audioPlayerInitialization = () => {
    };
 
    //update audio progress bar, in particularly time thats passed and total time
-   /*const updateAudioProggressBar = () => {
+   const updateAudioProggressBar = () => {
       const trackCurrentTime = audioPlayerSong.currentTime;
       const trackDuration = audioPlayerSong.duration;
       
       const progressbarValue = (trackCurrentTime / trackDuration) * 100;
 
-   };*/
+      audioProgressBarTiming.style.width = `${progressbarValue}%`; // increase gradualy the width of audio progress bar
+
+      let minutesPassed = Math.floor(trackCurrentTime / 60) || "0"; // adding "0" to avoid NaN as a total playing time when play next song
+      let secondsPassed = Math.floor(trackCurrentTime % 60) || "0";
+
+      let minutesTotal = Math.floor(trackDuration / 60) || "0";
+      let secondsTotal = Math.floor(trackDuration % 60) || "0";
+
+      audioPlayerTimePassed.textContent = `${addZero(minutesPassed)}:${addZero(secondsPassed)}`;
+      audioPlayerTotalTime .textContent = `${addZero(minutesTotal)}:${addZero(secondsTotal)}`;
+   };
 
    //event listeners
    audioPlayerNavigation.addEventListener("click", (event) => {
@@ -110,6 +123,6 @@ export const audioPlayerInitialization = () => {
    });
 
    audioPlayerSong.addEventListener("ended", runNextTrack);
-   //audioPlayerSong.addEventListener("timeupdate", updateAudioProggressBar);
+   audioPlayerSong.addEventListener("timeupdate", updateAudioProggressBar);
 
 };
