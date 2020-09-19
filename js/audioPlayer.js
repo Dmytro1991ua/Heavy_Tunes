@@ -12,11 +12,11 @@ export const audioPlayerInitialization = () => {
       audioPlayerProgressBar = document.querySelector(".audio-footer__audio-progress"),
       audioPlayerTotalTime = document.querySelector(".audio-footer__audio-time--total"),
       audioVolumeIcons = document.querySelectorAll(".audio-footer__volume-icon"),
-      volumeBtns = document.querySelector(".audio-footer__volume-btn"),
+      volumeBtn = document.querySelector(".audio-footer__volume-btn"),
       volumeMute = document.querySelector(".volume-mute"),
       volumeDown = document.querySelector(".volume-down"),
       volumeUp = document.querySelector(".volume-up"),
-      aduioPlayerVolumeBar = document.querySelector(".audio-footer__audio-volume");
+      audioPlayerVolumeBar = document.querySelector(".audio-footer__audio-volume");
 
    const playListArray = ["Hatebreed - Destroy Everything", "Metallica - One", "BFMV - Piece of Me", "Sabaton - Uprising"]; // an array of playlist sinc there is no backend in thsi project
 
@@ -44,7 +44,7 @@ export const audioPlayerInitialization = () => {
    };
 
    //run next track from a playlist on click
-   const nextTrack = () => { 
+   const nextTrack = () => {
       if (trackIndex === playListArray.length - 1) { // if current trackIndex === last index => back to first song
          trackIndex = 0;
       } else {
@@ -57,7 +57,7 @@ export const audioPlayerInitialization = () => {
    const loadTrack = () => {
       const isPlaying = audioPlayerSong.paused;
       const track = playListArray[trackIndex];
-  
+
       audioPlayerAudioTitle.textContent = track.toUpperCase(); // change a audio player title to particular track name
       audioPlayerAudioTitle.style.color = "rgb(255, 0, 0)";
       audioPlayerCover.src = `music/${track}.jpg`;
@@ -70,7 +70,7 @@ export const audioPlayerInitialization = () => {
          audioPlayerSong.play();
       }
 
-    // setTimeout(updateTime, 500);
+      // setTimeout(updateTime, 500);
    };
 
 
@@ -84,7 +84,7 @@ export const audioPlayerInitialization = () => {
    const updateAudioProggressBar = () => {
       const trackCurrentTime = audioPlayerSong.currentTime;
       const trackDuration = audioPlayerSong.duration;
-      
+
       const progressbarValue = (trackCurrentTime / trackDuration) * 100;
 
       audioProgressBarTiming.style.width = `${progressbarValue}%`; // increase gradualy the width of audio progress bar
@@ -105,20 +105,10 @@ export const audioPlayerInitialization = () => {
       const progressBarAllWidth = audioPlayerProgressBar.clientWidth; // get full widt of a progress bar 
 
       const progress = (clickCoordinates / progressBarAllWidth) * audioPlayerSong.duration;
-      audioPlayerSong.currentTime = progress; 
+      audioPlayerSong.currentTime = progress;
    };
 
-   // change a volume of a track by using audio volume bar
-   const increaseTrackVolume = () => {
-      aduioPlayerVolumeBar.addEventListener("input", () => {
-         audioPlayerSong.volume = aduioPlayerVolumeBar.value / 100;
-      });
-      audioPlayerSong.volume = .5; // make volume of 50% at the beginning;
-<<<<<<< HEAD
-      aduioPlayerVolumeBar.value = audioPlayerSong.volume * 100;
-=======
-      audioPlayerVolumeBar.value = audioPlayerSong.volume * 100;
-   };
+ 
 
    // update volume icon depends on a state of a track
    const updateVolumeIcon = () => {
@@ -126,27 +116,27 @@ export const audioPlayerInitialization = () => {
          icon.classList.add("hidden");
       });
 
-      volumeBtns.setAttribute("data-title", "Mute (m)");
+      volumeBtn.setAttribute("data-title", "Mute (m)");
+
       if (audioPlayerSong.muted || audioPlayerSong.volume === 0) {
          volumeMute.classList.remove("hidden");
+         volumeBtn.setAttribute("data-title", "Unmute (m)");
       } else if (audioPlayerSong.volume > 0 && audioPlayerSong.volume <= 0.5) {
          volumeDown.classList.remove("hidden")
       } else {
          volumeUp.classList.remove("hidden");
       }
-
->>>>>>> new
    };
 
    //event listeners
    audioPlayerNavigation.addEventListener("click", (event) => {
       const target = event.target;
-     
+
       if (target.classList.contains('audio-footer__btn--play')) { // click on btn play
          playAudiotrack();
          audio.classList.toggle("play");
          audioPlayerBtnPlay.classList.toggle("fa-play");
-         audioPlayerBtnPlay.classList.toggle("fa-pause"); 
+         audioPlayerBtnPlay.classList.toggle("fa-pause");
       }
 
       const track = playListArray[trackIndex]; // holds an index of a specific track from array with playlist
@@ -158,18 +148,15 @@ export const audioPlayerInitialization = () => {
          previousTrack();
       }
       if (target.classList.contains("audio-footer__btn--next")) {
-        nextTrack();
+         nextTrack();
       }
    });
 
    audioPlayerSong.addEventListener("ended", runNextTrack);
    audioPlayerSong.addEventListener("timeupdate", updateAudioProggressBar);
    audioPlayerProgressBar.addEventListener("click", rewindAudioTrack);
-<<<<<<< HEAD
-=======
    audioPlayerSong.addEventListener("volumechange", updateVolumeIcon);
->>>>>>> new
 
    // functions call
-   increaseTrackVolume();
+   //increaseTrackVolume();
 };
