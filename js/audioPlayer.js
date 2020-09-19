@@ -108,7 +108,14 @@ export const audioPlayerInitialization = () => {
       audioPlayerSong.currentTime = progress;
    };
 
- 
+   // change a volume of a track by using audio volume bar
+   const increaseTrackVolume = () => {
+      audioPlayerVolumeBar.addEventListener("input", () => {
+         audioPlayerSong.volume = audioPlayerVolumeBar.value / 100;
+      });
+      audioPlayerSong.volume = .5; // make volume of 50% at the beginning;
+      audioPlayerVolumeBar.value = audioPlayerSong.volume * 100;
+   };
 
    // update volume icon depends on a state of a track
    const updateVolumeIcon = () => {
@@ -158,5 +165,5 @@ export const audioPlayerInitialization = () => {
    audioPlayerSong.addEventListener("volumechange", updateVolumeIcon);
 
    // functions call
-   //increaseTrackVolume();
+   increaseTrackVolume();
 };
