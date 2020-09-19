@@ -13,9 +13,9 @@ export const audioPlayerInitialization = () => {
       audioPlayerTotalTime = document.querySelector(".audio-footer__audio-time--total"),
       audioVolumeIcons = document.querySelectorAll(".audio-footer__volume-icon"),
       volumeBtn = document.querySelector(".audio-footer__volume-btn"),
-      volumeMute = document.querySelector(".volume-mute"),
-      volumeDown = document.querySelector(".volume-down"),
-      volumeUp = document.querySelector(".volume-up"),
+      volumeMute = document.querySelector(".audio-volume-mute"),
+      volumeDown = document.querySelector(".audio-volume-down"),
+      volumeUp = document.querySelector(".audio-volume-up"),
       audioPlayerVolumeBar = document.querySelector(".audio-footer__audio-volume");
 
    const playListArray = ["Hatebreed - Destroy Everything", "Metallica - One", "BFMV - Piece of Me", "Sabaton - Uprising"]; // an array of playlist sinc there is no backend in thsi project
@@ -124,12 +124,12 @@ export const audioPlayerInitialization = () => {
       });
 
       volumeBtn.setAttribute("data-title", "Mute (m)");
-
+      
       if (audioPlayerSong.muted || audioPlayerSong.volume === 0) {
          volumeMute.classList.remove("hidden");
          volumeBtn.setAttribute("data-title", "Unmute (m)");
-      } else if (audioPlayerSong.volume > 0 && audioPlayerSong.volume <= 0.5) {
-         volumeDown.classList.remove("hidden")
+      } else if (audioPlayerSong.volume > 0 && audioPlayerSong.volume <= .5) {
+         volumeDown.classList.remove("hidden");
       } else {
          volumeUp.classList.remove("hidden");
       }

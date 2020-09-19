@@ -99,7 +99,7 @@ main {
 }
 
 .heading--colored {
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Lobster', cursive;
     color: var(--logo-clr);
     text-transform: uppercase;
 }
@@ -675,7 +675,7 @@ main {
 
 .video-container__description-title {
     font-size: calc(25px + 25 * ((100vw - 320px) / (1920 - 320)));
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Lobster', cursive;
     -ms-flex-item-align: center;
     -ms-grid-row-align: center;
     align-self: center;
@@ -748,7 +748,7 @@ main {
 
 .video-container__description-item span {
     font-size: calc(18px + 7 * ((100vw - 320px) / (1920 - 320)));
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Lobster', cursive;
     color: var(--logo-clr);
     margin-right: 1rem;
     text-transform: uppercase;
@@ -798,16 +798,17 @@ main {
 
 .audio-player__image-cover {
     -webkit-box-flex: 0;
-<<<<<<< HEAD
     margin-bottom: 2.5rem;
-    width: 20rem;
-    height: 20rem;
     transition: all .4s ease-in-out;
-=======
     margin-bottom: 4rem;
-    width: 25rem;
-    height: 25rem;
->>>>>>> new
+    width: 27rem;
+    border: 5px solid transparent;
+    border-radius: 50%;
+}
+
+.audio-player__image-cover:hover {
+    border: 5px solid var(--logo-clr);
+    cursor: pointer;
 }
 
 @media (min-width: 768px) {
@@ -815,14 +816,12 @@ main {
         margin-bottom: 0rem;
         margin-right: 3rem;
         width: 30rem;
-        height: 30rem;
     }
 }
 
 @media (min-width: 1200px) {
     .audio-player__image-cover {
         width: 43rem;
-        height: 43rem;
     }
 }
 
@@ -830,6 +829,7 @@ main {
     margin-bottom: 1.2rem;
     margin: auto;
     width: 100%;
+    height: 100%;
     object-fit: fill;
     border-radius: 50%;
 }
@@ -864,7 +864,7 @@ main {
 }
 
 .audio-payer__audio-info--colored {
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Lobster', cursive;
     color: var(--logo-clr);
     font-size: calc(30px + 30 * ((100vw - 320px) / (1920 - 320)));
 }
@@ -1104,6 +1104,7 @@ main {
 @media (min-width: 992px) {
     .audio-footer__volume-btn {
         font-size: 3rem;
+        margin-right: 1.2rem;
     }
 
     .audio-footer__volume-btn::after {
@@ -1364,7 +1365,7 @@ main {
 
 .radio-stations__name {
     font-size: calc(16px + 16 * ((100vw - 320px) / (1920 - 320)));
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Lobster', cursive;
 }
 
 /* Radio player navigation features*/
