@@ -107,6 +107,15 @@ export const audioPlayerInitialization = () => {
       audioPlayerSong.currentTime = progress; 
    };
 
+   // change a volume of a track by using audio volume bar
+   const increaseTrackVolume = () => {
+      aduioPlayerVolumeBar.addEventListener("input", () => {
+         audioPlayerSong.volume = aduioPlayerVolumeBar.value / 100;
+      });
+      audioPlayerSong.volume = .5; // make volume of 50% at the beginning;
+      aduioPlayerVolumeBar.value = audioPlayerSong.volume * 100;
+   };
+
    //event listeners
    audioPlayerNavigation.addEventListener("click", (event) => {
       const target = event.target;
@@ -135,5 +144,6 @@ export const audioPlayerInitialization = () => {
    audioPlayerSong.addEventListener("timeupdate", updateAudioProggressBar);
    audioPlayerProgressBar.addEventListener("click", rewindAudioTrack);
 
-
+   // functions call
+   increaseTrackVolume();
 };
