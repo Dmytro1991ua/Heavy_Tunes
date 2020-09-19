@@ -18,7 +18,7 @@ export const audioPlayerInitialization = () => {
       volumeUp = document.querySelector(".audio-volume-up"),
       audioPlayerVolumeBar = document.querySelector(".audio-footer__audio-volume");
 
-   const playListArray = ["Hatebreed - Destroy Everything", "Metallica - One", "BFMV - Piece of Me", "Sabaton - Uprising"]; // an array of playlist sinc there is no backend in thsi project
+   const playListArray = ["Hatebreed - Destroy Everything", "Metallica - One", "BFMV - Piece of Me", "Sabaton - Uprising", "Disturbed - The Night", "Powerwolf - Stossgebet", "Rammstein - Deutschland", "Seether - Pride", "Fear Factory - New Messiah"]; // an array of playlist sinc there is no backend in thsi project
 
    let trackIndex = 0; // variable holds an index of currently playing track
 
