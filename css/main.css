@@ -794,8 +794,8 @@ main {
 .audio-player__image-cover {
     -webkit-box-flex: 0;
     margin-bottom: 4rem;
-    width: 20rem;
-    height: 20rem;
+    width: 25rem;
+    height: 25rem;
 }
 
 @media (min-width: 768px) {

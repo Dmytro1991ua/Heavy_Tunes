@@ -1,21 +1,25 @@
+import { addZero } from "./supportScript.js";
+
 export const audioPlayerInitialization = () => {
    const audio = document.querySelector(".audio"), // container for all audio player elements
-      audioPlayer = document.querySelector(".audio-player"),
       audioPlayerCover = document.querySelector(".audio-player__img"),
       audioPlayerAudioTitle = document.querySelector(".audio-player__audio-title"),
       audioPlayerSong = document.querySelector(".audio-player__song"),
       audioPlayerNavigation = document.querySelector(".audio-footer__navigation"),
       audioPlayerBtnPlay = document.querySelector(".audio-footer__btn--play"),
+      audioProgressBarTiming = document.querySelector(".audio-footer__audio-progress-timing"),
       audioPlayerTimePassed = document.querySelector(".audio-footer__audio-time--passed"),
       audioPlayerProgressBar = document.querySelector(".audio-footer__audio-progress"),
       audioPlayerTotalTime = document.querySelector(".audio-footer__audio-time--total"),
-      volumeBtns = document.querySelectorAll(".audio-footer__volume-btn"),
+      audioVolumeIcons = document.querySelectorAll(".audio-footer__volume-icon"),
+      volumeBtns = document.querySelector(".audio-footer__volume-btn"),
       volumeMute = document.querySelector(".volume-mute"),
       volumeDown = document.querySelector(".volume-down"),
       volumeUp = document.querySelector(".volume-up"),
       aduioPlayerVolumeBar = document.querySelector(".audio-footer__audio-volume");
 
    const playListArray = ["Hatebreed - Destroy Everything", "Metallica - One", "BFMV - Piece of Me", "Sabaton - Uprising"]; // an array of playlist sinc there is no backend in thsi project
+
    let trackIndex = 0; // variable holds an index of currently playing track
 
    // play and pause audio track and change tooltip depends on a state of track
@@ -69,6 +73,67 @@ export const audioPlayerInitialization = () => {
     // setTimeout(updateTime, 500);
    };
 
+
+   // play track next track when the precious one ended;
+   const runNextTrack = () => {
+      nextTrack();
+      audioPlayerSong.play();
+   };
+
+   //update audio progress bar, in particularly time thats passed and total time
+   const updateAudioProggressBar = () => {
+      const trackCurrentTime = audioPlayerSong.currentTime;
+      const trackDuration = audioPlayerSong.duration;
+      
+      const progressbarValue = (trackCurrentTime / trackDuration) * 100;
+
+      audioProgressBarTiming.style.width = `${progressbarValue}%`; // increase gradualy the width of audio progress bar
+
+      let minutesPassed = Math.floor(trackCurrentTime / 60) || "0"; // adding "0" to avoid NaN as a total playing time when play next song
+      let secondsPassed = Math.floor(trackCurrentTime % 60) || "0";
+
+      let minutesTotal = Math.floor(trackDuration / 60) || "0";
+      let secondsTotal = Math.floor(trackDuration % 60) || "0";
+
+      audioPlayerTimePassed.textContent = `${addZero(minutesPassed)}:${addZero(secondsPassed)}`;
+      audioPlayerTotalTime.textContent = `${addZero(minutesTotal)}:${addZero(secondsTotal)}`;
+   };
+
+   //rewind audio track by using audio progress bar (input)
+   const rewindAudioTrack = (event) => {
+      const clickCoordinates = event.offsetX; // get a coordinates where was a click on progress bar
+      const progressBarAllWidth = audioPlayerProgressBar.clientWidth; // get full widt of a progress bar 
+
+      const progress = (clickCoordinates / progressBarAllWidth) * audioPlayerSong.duration;
+      audioPlayerSong.currentTime = progress; 
+   };
+
+   // change a volume of a track by using audio volume bar
+   const increaseTrackVolume = () => {
+      aduioPlayerVolumeBar.addEventListener("input", () => {
+         audioPlayerSong.volume = aduioPlayerVolumeBar.value / 100;
+      });
+      audioPlayerSong.volume = .5; // make volume of 50% at the beginning;
+      audioPlayerVolumeBar.value = audioPlayerSong.volume * 100;
+   };
+
+   // update volume icon depends on a state of a track
+   const updateVolumeIcon = () => {
+      audioVolumeIcons.forEach(icon => {
+         icon.classList.add("hidden");
+      });
+
+      volumeBtns.setAttribute("data-title", "Mute (m)");
+      if (audioPlayerSong.muted || audioPlayerSong.volume === 0) {
+         volumeMute.classList.remove("hidden");
+      } else if (audioPlayerSong.volume > 0 && audioPlayerSong.volume <= 0.5) {
+         volumeDown.classList.remove("hidden")
+      } else {
+         volumeUp.classList.remove("hidden");
+      }
+
+   };
+
    //event listeners
    audioPlayerNavigation.addEventListener("click", (event) => {
       const target = event.target;
@@ -92,4 +157,12 @@ export const audioPlayerInitialization = () => {
         nextTrack();
       }
    });
+
+   audioPlayerSong.addEventListener("ended", runNextTrack);
+   audioPlayerSong.addEventListener("timeupdate", updateAudioProggressBar);
+   audioPlayerProgressBar.addEventListener("click", rewindAudioTrack);
+   audioPlayerSong.addEventListener("volumechange", updateVolumeIcon);
+
+   // functions call
+   increaseTrackVolume();
 };
