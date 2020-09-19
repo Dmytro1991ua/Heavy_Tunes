@@ -11,7 +11,8 @@ export const audioPlayerInitialization = () => {
       audioPlayerTimePassed = document.querySelector(".audio-footer__audio-time--passed"),
       audioPlayerProgressBar = document.querySelector(".audio-footer__audio-progress"),
       audioPlayerTotalTime = document.querySelector(".audio-footer__audio-time--total"),
-      volumeBtns = document.querySelectorAll(".audio-footer__volume-btn"),
+      audioVolumeIcons = document.querySelectorAll(".audio-footer__volume-icon"),
+      volumeBtns = document.querySelector(".audio-footer__volume-btn"),
       volumeMute = document.querySelector(".volume-mute"),
       volumeDown = document.querySelector(".volume-down"),
       volumeUp = document.querySelector(".volume-up"),
@@ -113,7 +114,28 @@ export const audioPlayerInitialization = () => {
          audioPlayerSong.volume = aduioPlayerVolumeBar.value / 100;
       });
       audioPlayerSong.volume = .5; // make volume of 50% at the beginning;
+<<<<<<< HEAD
       aduioPlayerVolumeBar.value = audioPlayerSong.volume * 100;
+=======
+      audioPlayerVolumeBar.value = audioPlayerSong.volume * 100;
+   };
+
+   // update volume icon depends on a state of a track
+   const updateVolumeIcon = () => {
+      audioVolumeIcons.forEach(icon => {
+         icon.classList.add("hidden");
+      });
+
+      volumeBtns.setAttribute("data-title", "Mute (m)");
+      if (audioPlayerSong.muted || audioPlayerSong.volume === 0) {
+         volumeMute.classList.remove("hidden");
+      } else if (audioPlayerSong.volume > 0 && audioPlayerSong.volume <= 0.5) {
+         volumeDown.classList.remove("hidden")
+      } else {
+         volumeUp.classList.remove("hidden");
+      }
+
+>>>>>>> new
    };
 
    //event listeners
@@ -143,6 +165,10 @@ export const audioPlayerInitialization = () => {
    audioPlayerSong.addEventListener("ended", runNextTrack);
    audioPlayerSong.addEventListener("timeupdate", updateAudioProggressBar);
    audioPlayerProgressBar.addEventListener("click", rewindAudioTrack);
+<<<<<<< HEAD
+=======
+   audioPlayerSong.addEventListener("volumechange", updateVolumeIcon);
+>>>>>>> new
 
    // functions call
    increaseTrackVolume();
