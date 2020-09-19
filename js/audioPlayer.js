@@ -124,7 +124,7 @@ export const audioPlayerInitialization = () => {
       });
 
       volumeBtn.setAttribute("data-title", "Mute (m)");
-      
+
       if (audioPlayerSong.muted || audioPlayerSong.volume === 0) {
          volumeMute.classList.remove("hidden");
          volumeBtn.setAttribute("data-title", "Unmute (m)");
@@ -132,6 +132,17 @@ export const audioPlayerInitialization = () => {
          volumeDown.classList.remove("hidden");
       } else {
          volumeUp.classList.remove("hidden");
+      }
+   };
+
+   // change mute state of a track on click to a volume icon
+   const toggleMuteState = () => {
+      audioPlayerSong.muted = !audioPlayerSong.muted; // toggle mute state of audio (if ture => false and vise versa)
+      if (audioPlayerSong.muted) {
+         audioPlayerVolumeBar.setAttribute("data-volume", audioPlayerVolumeBar.value); // when audio on pause data-volume holds a previous value of volume bar (like 30% volume)
+         audioPlayerVolumeBar.value = 0;
+      } else {
+         audioPlayerVolumeBar.value = audioPlayerVolumeBar.dataset.volume; // if audio plays get a value from previous value of volume bar (like 30%) and continue playing form that point
       }
    };
 
@@ -163,6 +174,7 @@ export const audioPlayerInitialization = () => {
    audioPlayerSong.addEventListener("timeupdate", updateAudioProggressBar);
    audioPlayerProgressBar.addEventListener("click", rewindAudioTrack);
    audioPlayerSong.addEventListener("volumechange", updateVolumeIcon);
+   volumeBtn.addEventListener("click", toggleMuteState);
 
    // functions call
    increaseTrackVolume();
