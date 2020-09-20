@@ -1385,6 +1385,7 @@ main {
     justify-content: center;
     font-size: 2.5rem;
     cursor: pointer;
+    position: relative;
 }
 
 @media (min-width: 768px) {
@@ -1399,17 +1400,20 @@ main {
     }
 }
 
-.radio-footer__btn {}
-
-.btn-stop {
+.radio-footer__btn {
     border: none;
     background-color: transparent;
-    margin-right: 1.4rem;
+    margin-right: 2.4rem;
 }
 
-.btn-stop.disabled {
+.radio-footer__btn.disabled {
     color: var(--color-disabled);
     opacity: .3;
+}
+
+.radio-footer__btn::after {
+    top: -3rem;
+    left: -2rem;
 }
 
 @media (min-width: 768px) {
@@ -1418,33 +1422,55 @@ main {
     }
 }
 
-.radio-footer-icon {}
-
-.radio-footer-volume {
-    margin: 0 1rem;
+.radio-footer__volume-btn {
+    border: none;
+    background-color: transparent;
+    color: var(--main-color);
+    font-size: 1.6rem;
+    margin-right: .5rem;
 }
 
-@media (min-width: 520px) {
-    .radio-footer-volume {
-        width: 26rem;
-    }
+.radio-footer__volume-btn:after {
+    top: -3rem;
+    left: 1rem;
 }
 
 @media (min-width: 768px) {
-    .radio-footer-volume {
+    .radio-footer__volume-btn {
+        font-size: 2.1rem;
+        margin-right: 1.5rem;
+    }
+
+    .radio-footer__volume-btn:after {
+        top: -3rem;
+        left: 3rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .radio-footer__volume-btn {
+        font-size: 3rem;
+    }
+
+    .radio-footer__volume-btn:after {
+        top: -3rem;
+        left: 5rem;
+    }
+}
+
+.radio-footer__radio-volume {
+    width: 21rem;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .radio-footer__radio-volume {
         width: 30rem;
-        margin: 0 2rem;
     }
 }
 
-.radio-footer-volume-up {
-    margin-right: 2rem;
-}
+.radio-volume-mute {}
 
-@media (min-width: 768px) {
-    .radio-footer-volume-up {
-        margin-right: 4rem;
-    }
-}
+.radio-volume-down {}
 
-.radio-footer-mute {}
+.radio-volume-up {}

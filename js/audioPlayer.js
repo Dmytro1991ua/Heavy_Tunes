@@ -70,7 +70,7 @@ export const audioPlayerInitialization = () => {
          audioPlayerSong.play();
       }
 
-      // setTimeout(updateTime, 500);
+      setTimeout(updateTime, 500);
    };
 
 

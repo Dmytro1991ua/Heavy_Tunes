@@ -154,6 +154,7 @@
                      <span class="audio-footer__volume-icon audio-volume-up fa fa-volume-up"></span>
                   </button>
                   <input type="range" class="audio-footer__audio-volume" min="0" max="100" step="0.01" value="1">
+                  <!--Elements of adjustment volume ends-->
                </div>
             </footer>
          </article>
@@ -214,17 +215,6 @@
                            </label>
                         </li>
 
-                        <!--<li class="radio-stations__item">
-                           <label class="radio-stations__label">
-                              <figure class="radio-stations__image-cover">
-                                 <img src="radio/rock-arsenal.png" alt="Radio Cover" class="radio-stations__img">
-                              </figure>
-                              <input type="radio" class="radio-stations__btn-select" name="radioStation"
-                                 data-radio-stations="http://tun.in/seKZ7" id="rockArsenal">
-                              <span class="radio-stations__name">Rock Arsenal</span>
-                           </label>
-                        </li> -->
-
                         <li class="radio-stations__item">
                            <label class="radio-stations__label">
                               <figure class="radio-stations__image-cover">
@@ -246,17 +236,6 @@
                               <span class="radio-stations__name">The Drive</span>
                            </label>
                         </li>
-
-                        <!--<li class="radio-stations__item">
-                           <label class="radio-stations__label">
-                              <figure class="radio-stations__image-cover">
-                                 <img src="radio/the-fox.png" alt="Radio Cover" class="radio-stations__img">
-                              </figure>
-                              <input type="radio" class="radio-stations__btn-select" name="radioStation"
-                                 data-radio-stations="http://tun.in/seKZ7" id="theFox">
-                              <span class="radio-stations__name">The Fox</span>
-                           </label>
-                        </li> -->
 
                         <li class="radio-stations__item">
                            <label class="radio-stations__label">
@@ -297,13 +276,15 @@
                   <!--Radio player navigation features starts-->
                   <footer class="fixed-footer radio-footer">
                      <div class="radio-footer__navigation">
-                        <button class="radio-footer__btn btn-stop fa fa-play"></button>
-                        <!-- Элементы регулировки громкости начало-->
-                        <span class="fa fa-volume-down  radio-footer-icon"></span>
-                        <input type="range" class="radio-footer-volume" min="0" max="100" step="1" value="100">
-                        <span class="fa fa-volume-up  radio-footer-icon radio-footer-volume-up"></span>
-                        <span class="fa fa-volume-off radio-footer-mute"></span>
-                        <!-- Элементы регулировки громкости конец-->
+                        <button class="radio-footer__btn btn-stop icons fa fa-play" data-title="Play (k)"></button>
+                        <!--Elements of adjustment volume starts-->
+                        <button class="radio-footer__volume-btn icons" data-title="Mute (m)">
+                           <span class="radio-footer__volume-icon hidden radio-volume-mute fa fa-volume-off"></span>
+                           <span class="radio-footer__volume-icon hidden radio-volume-down fa fa-volume-down "></span>
+                           <span class="radio-footer__volume-icon radio-volume-up fa fa-volume-up"></span>
+                        </button>
+                        <input type="range" class="radio-footer__radio-volume" min="0" max="100" step="0.01" value="1">
+                        <!--Elements of adjustment volume ends-->
                      </div>
                      <!--Radio player navigation features ends-->
                   </footer>
