@@ -1205,6 +1205,7 @@ main {
 
 .radio-player__image-cover {
     margin-bottom: 1.5rem;
+   
 }
 
 @media (min-width: 768px) {
@@ -1224,7 +1225,7 @@ main {
     }
 }
 
-.audio-pradio__img {
+.radio-player__img {
     margin: 0 auto;
 }
 
@@ -1406,7 +1407,7 @@ main {
     margin-right: 2.4rem;
 }
 
-.radio-footer__btn.disabled {
+.radio-footer__btn:disabled {
     color: var(--color-disabled);
     opacity: .3;
 }
