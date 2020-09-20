@@ -146,6 +146,20 @@ export const audioPlayerInitialization = () => {
       }
    };
 
+   // fixing a bug when a audio player in running and we press a btn(filter btn) to change a tab content we need to stop running audio
+   audioPlayerInitialization.stop = () => {
+      if (!audioPlayerSong.paused) {
+         audioPlayerSong.pause(); // apply pause() method to a audio when we change tab content (video or radio)
+
+         //remove some classes so when we come back to a music player it's gonna be play btn and play tooltip
+         audio.classList.remove("play");
+         audioPlayerBtnPlay.classList.toggle("fa-pause");
+         audioPlayerBtnPlay.classList.toggle("fa-play");
+         audioPlayerBtnPlay.setAttribute("data-title", "Play (k)");
+
+      }
+   }
+
    //event listeners
    audioPlayerNavigation.addEventListener("click", (event) => {
       const target = event.target;

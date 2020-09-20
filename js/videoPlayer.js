@@ -161,7 +161,7 @@ export const videoPlayerInitialization = () => {
    };
    // Detect press of spacebar or enter keys when play or pause video player and ArrowLeft and ArrowRight to rewind a vido for 5s
    const detectKeypress = (event) => {
-      switch (event.code) {
+      switch (event.keyCode) {
          case 32: // spacebar key
             runVideoPlayer();
             break;
@@ -196,7 +196,11 @@ export const videoPlayerInitialization = () => {
    // fixing a bug when a video player in running and we press a btn to change a tab content we need to stop running video
    videoPlayerInitialization.stop = () => {
       if (!videoPlayer.paused) {
-         stopVideoPlayer();
+         videoPlayer.pause(); // apply pause() method to a video when we change tab content (video or radio)
+         
+         videoBtnPlay.classList.add("fa-play");
+         videoBtnPlay.classList.remove("fa-pause");
+         videoBtnPlay.setAttribute("data-title", "Play (k)"); 
       } 
    } 
 
