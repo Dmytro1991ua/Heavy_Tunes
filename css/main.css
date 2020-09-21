@@ -1210,6 +1210,7 @@ main {
     margin: auto;
     border: 5px transparent solid;
     cursor: pointer;
+    transition: all .3s ease-in-out;
 }
 
 .radio-player__image-cover:hover {
@@ -1311,7 +1312,7 @@ main {
     margin-right: 0rem;
 }
 
-.radio-item.select .radio-stations__image-cover {
+.radio-stations__item.select .radio-stations__image-cover {
     border: 5px solid --bg-main;
 }
 
@@ -1365,6 +1366,8 @@ main {
     -o-object-fit: fill;
     object-fit: fill;
     border-radius: 50%;
+    animation: rotate 6s linear infinite;
+    animation-play-state: paused;
 }
 
 .radio-stations__btn-select {}
@@ -1480,3 +1483,27 @@ main {
 .radio-volume-down {}
 
 .radio-volume-up {}
+
+@-webkit-keyframes rotate {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}

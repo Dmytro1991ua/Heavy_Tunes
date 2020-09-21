@@ -29,6 +29,21 @@ export const radioPlayerInitialization = () => {
       }
    };
 
+   /*const selectRadioStation = (element) => {
+      radioStations.forEach(station => {
+         station.classList.remove('select');
+      });
+      element.classList.add("select");
+   }; */
+
+   //change audio volume by using audio volume bar
+   const changeAudioVolume = () => {
+      radioVolumeBar.addEventListener("input", () => {
+         audio.volume = radioVolumeBar.value / 100;
+      });
+      audio.volume = .5; // make a audio volume 50% by default
+      radioVolumeBar.value = audio.volume * 100;
+   };
    // event listeners
 
    radioStationContainer.addEventListener("change", (event) => {
@@ -38,17 +53,18 @@ export const radioPlayerInitialization = () => {
       const parentOfTarget = target.closest(".radio-stations__item"); // get a parent of clicked radio station (target)
       
       const radioStationTitle = parentOfTarget.querySelector(".radio-stations__name").textContent; // get a name (as text) of radio station
-      radioPlayerTitle.textContent = radioStationTitle; // change default radio player title to certain radio staion's title
+      radioPlayerTitle.textContent = radioStationTitle; // change default radio player title to certain clicked radio staion's title
 
       const radioStationCover = parentOfTarget.querySelector(".radio-stations__img").src; // grab a path to a certain img and get a particular name of it
       //radioPlayerImg.src = radioStationCover;
       radioPlayerImg.src = radioStationCover;
 
-      audio.src = target.dataset.radioStations; // get a path to a radio (from data-radio-stations) station to a audio object
+      audio.src = target.dataset.radioStations; // apply a path to a radio (from data-radio-stations) station to a audio object
       audio.play();
       changeIconPlay();
+      //selectRadioStation(parentOfTarget);
 
-      radioBtnPlay.addEventListener("click", () => { // functionality to play and pause radio player and change tooltip as well
+      radioBtnPlay.addEventListener("click", () => { // functionality to play and pause radio player and change tooltip as well on click to a play btn
          if (audio.paused || audio.ended) {
             audio.play();
             radioBtnPlay.setAttribute("data-title", "Pause (k)");
@@ -59,4 +75,8 @@ export const radioPlayerInitialization = () => {
          changeIconPlay();
       })
    });
+
+   //functions call
+
+   changeAudioVolume();
 };
