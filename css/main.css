@@ -1204,29 +1204,34 @@ main {
 }
 
 .radio-player__image-cover {
-    margin-bottom: 1.5rem;
-   
+    width: 30rem;
+    height: 30rem;
+    border-radius: 50%;
+    margin: auto;
+    border: 5px transparent solid;
+    cursor: pointer;
+}
+
+.radio-player__image-cover:hover {
+    border: 5px solid var(--logo-clr);
 }
 
 @media (min-width: 768px) {
     .radio-player__image-cover {
-        -webkit-box-flex: 0;
-        -ms-flex: 0 1 29%;
-        flex: 0 1 29%;
         margin-bottom: 0rem;
     }
 }
 
 @media (min-width: 992px) {
-    .radio-player__image-cover {
-        -webkit-box-flex: 0;
-        -ms-flex: 0 1 50%;
-        flex: 0 1 50%;
-    }
+    .radio-player__image-cover {}
 }
 
 .radio-player__img {
     margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    border-radius: 50%;
 }
 
 .radio-player__audio-title-box {
@@ -1234,9 +1239,9 @@ main {
 }
 
 @media (min-width: 768px) {
-    /*.radio-player__audio-title-box {
-        width: 47%;
-    } */
+    .radio-player__audio-title-box {
+        flex: 0 1 50%;
+    }
 }
 
 .radio-player__audio-title {

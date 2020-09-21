@@ -16,18 +16,20 @@ export const radioPlayerInitialization = () => {
    audio.type = "audio/acc";
    radioBtnPlay.disabled = true; // apply disabled to play btn at the beginning
 
-   //play and pause radio player
-   const playRadioStation = () => {
-      if (audio.paused || audio.ended) {
-         audio.play();
-         radioBtnPlay.setAttribute("data-title", "Pause (k)");
+   //change  play button image depends on a audio state
+   const changeIconPlay = () => {
+      if (audio.paused) {
+         radio.classList.remove("play");
+         radioBtnPlay.classList.add("fa-play");
+         radioBtnPlay.classList.remove("fa-stop");
       } else {
-         audio.pause();
-         radioBtnPlay.setAttribute("data-title", "Play (k)");
+         radio.classList.add("play");
+         radioBtnPlay.classList.remove("fa-play");
+         radioBtnPlay.classList.add("fa-stop");
       }
    };
 
-   radioBtnPlay.addEventListener("click", playRadioStation);
+   // event listeners
 
    radioStationContainer.addEventListener("change", (event) => {
       radioBtnPlay.disabled = false; //  remove disabled from btn play
@@ -42,5 +44,19 @@ export const radioPlayerInitialization = () => {
       //radioPlayerImg.src = radioStationCover;
       radioPlayerImg.src = radioStationCover;
 
+      audio.src = target.dataset.radioStations; // get a path to a radio (from data-radio-stations) station to a audio object
+      audio.play();
+      changeIconPlay();
+
+      radioBtnPlay.addEventListener("click", () => { // functionality to play and pause radio player and change tooltip as well
+         if (audio.paused || audio.ended) {
+            audio.play();
+            radioBtnPlay.setAttribute("data-title", "Pause (k)");
+         } else {
+            audio.pause();
+            radioBtnPlay.setAttribute("data-title", "Play (k)");
+         }
+         changeIconPlay();
+      })
    });
 };
