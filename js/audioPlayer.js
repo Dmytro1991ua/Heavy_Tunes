@@ -146,6 +146,20 @@ export const audioPlayerInitialization = () => {
       }
    };
 
+   // detect which key was pressed in order to rewind a audio
+   const detectKeypress = (event) => {
+      switch (event.code) {
+         case "ArrowLeft":
+            audioPlayerSong.currentTime -= 5;
+            break;
+         case "ArrowRight":
+            audioPlayerSong.currentTime += 5;
+            break;
+         default:
+            return;
+      }
+   }
+
    // fixing a bug when a audio player in running and we press a btn(filter btn) to change a tab content we need to stop running audio
    audioPlayerInitialization.stop = () => {
       if (!audioPlayerSong.paused) {
@@ -189,6 +203,7 @@ export const audioPlayerInitialization = () => {
    audioPlayerProgressBar.addEventListener("click", rewindAudioTrack);
    audioPlayerSong.addEventListener("volumechange", updateVolumeIcon);
    volumeBtn.addEventListener("click", toggleMuteState);
+   window.addEventListener("keydown", detectKeypress);
 
    // functions call
    increaseTrackVolume();

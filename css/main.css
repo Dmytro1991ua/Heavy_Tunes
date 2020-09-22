@@ -67,6 +67,8 @@ h1, h2, h3, p {
 }
 
 input {
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
     transition: all 0.4s ease;
 }
 
@@ -420,6 +422,8 @@ main {
     white-space: pre;
     opacity: 0;
     visibility: hidden;
+    -webkit-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
 }
 
@@ -472,8 +476,6 @@ main {
         margin-right: 3rem;
     }
 }
-
-.video-container__video-timing {}
 
 .video-time-passed {
     margin-right: .6rem;
@@ -622,6 +624,7 @@ main {
 }
 
 /****** Animation (change an icon) for a play and pause a video *****/
+
 .video-playback-animation {
     pointer-events: none;
     position: absolute;
@@ -633,13 +636,20 @@ main {
     height: 80px;
     border-radius: 80px;
     background-color: rgba(0, 0, 0, 0.6);
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     opacity: 0;
 }
 
 /****** Video player description items *****/
+
 .video-container__description {
     margin-top: 5rem;
 }
@@ -780,6 +790,9 @@ main {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
@@ -791,6 +804,9 @@ main {
 
 @media (min-width: 768px) {
     .audio-player__body {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
         flex-direction: row;
         min-height: 25rem;
     }
@@ -799,6 +815,8 @@ main {
 .audio-player__image-cover {
     -webkit-box-flex: 0;
     margin-bottom: 2.5rem;
+    -webkit-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
     margin-bottom: 4rem;
     width: 27rem;
@@ -830,6 +848,7 @@ main {
     margin: auto;
     width: 100%;
     height: 100%;
+    -o-object-fit: fill;
     object-fit: fill;
     border-radius: 50%;
 }
@@ -851,6 +870,8 @@ main {
 .audio-player__audio-title {
     font-size: calc(15px + 20 * ((100vw - 320px) / (1920 - 320)));
     text-align: center;
+    -webkit-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
 }
 
@@ -872,8 +893,6 @@ main {
 .audio-player__song {}
 
 /* Audio player navigation features */
-
-.audio-footer {}
 
 .fixed-footer {
     position: fixed;
@@ -912,6 +931,8 @@ main {
 }
 
 .audio-footer__btns {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     max-width: 14rem;
 }
@@ -1003,15 +1024,11 @@ main {
     }
 }
 
-.audio-footer__audio-time {}
-
 @media (min-width: 992px) {
     .audio-footer__audio-time {
         font-size: 2rem;
     }
 }
-
-.audio-footer__audio-time--passed {}
 
 .audio-footer__audio-progress {
     width: 7rem;
@@ -1133,10 +1150,6 @@ main {
 
 /********** Radio Player ******/
 
-.tab-content {}
-
-.radio {}
-
 .container {
     padding: 0 0.7rem;
 }
@@ -1152,8 +1165,6 @@ main {
         padding: 0 4rem;
     }
 }
-
-.tab-content__container {}
 
 /* Radio player title */
 .radio-player {
@@ -1213,6 +1224,8 @@ main {
     margin: auto;
     border: 5px transparent solid;
     cursor: pointer;
+    -webkit-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
 }
 
@@ -1234,6 +1247,7 @@ main {
     margin: 0 auto;
     width: 100%;
     height: 100%;
+    -o-object-fit: fill;
     object-fit: fill;
     border-radius: 50%;
 }
@@ -1244,6 +1258,8 @@ main {
 
 @media (min-width: 768px) {
     .radio-player__audio-title-box {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 1 50%;
         flex: 0 1 50%;
         margin-top: 0rem;
     }
@@ -1263,7 +1279,6 @@ main {
 }
 
 /* Radio player list  */
-.radio-stations {}
 
 .radio-stations__title {
     font-size: calc(16px + 17 * ((100vw - 320px) / (1920 - 320)));
@@ -1370,7 +1385,9 @@ main {
     -o-object-fit: fill;
     object-fit: fill;
     border-radius: 50%;
+    -webkit-animation: rotate 6s linear infinite;
     animation: rotate 6s linear infinite;
+    -webkit-animation-play-state: paused;
     animation-play-state: paused;
 }
 
@@ -1382,9 +1399,6 @@ main {
 }
 
 /* Radio player navigation features*/
-.fixed-footer {}
-
-.radio-footer {}
 
 .radio-footer__navigation {
     display: -webkit-box;
@@ -1481,12 +1495,6 @@ main {
         width: 30rem;
     }
 }
-
-.radio-volume-mute {}
-
-.radio-volume-down {}
-
-.radio-volume-up {}
 
 @-webkit-keyframes rotate {
     from {

@@ -28,6 +28,7 @@ const showContentOnClick = () => {
 
       videoPlayerInitialization.stop(); // stop running video player when we change a tab content by pressing a tab link
       audioPlayerInitialization.stop();
+      radioPlayerInitialization.stop();
    };
 
    const showTabContent = () => {

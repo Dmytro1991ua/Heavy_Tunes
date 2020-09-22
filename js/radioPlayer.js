@@ -77,6 +77,19 @@ export const radioPlayerInitialization = () => {
       }
    };
 
+   // fixing a bug when a radio player in running and we press a btn(filter btn) to change a tab content we need to stop running radio playing
+
+   radioPlayerInitialization.stop = () => {
+      if (!audio.paused) {
+         audio.pause();
+
+         radioBtnPlay.classList.add("fa-play");
+         radioBtnPlay.classList.remove("fa-stop");
+         radioBtnPlay.setAttribute("data-title", "Play (k)");
+
+      }
+   };
+
    // event listeners
 
    radioStationContainer.addEventListener("change", (event) => {
