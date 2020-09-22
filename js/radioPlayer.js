@@ -23,10 +23,12 @@ export const radioPlayerInitialization = () => {
          radio.classList.remove("play");
          radioBtnPlay.classList.add("fa-play");
          radioBtnPlay.classList.remove("fa-stop");
+         radioBtnPlay.setAttribute("data-title", "Play (k)");
       } else {
          radio.classList.add("play");
          radioBtnPlay.classList.remove("fa-play");
          radioBtnPlay.classList.add("fa-stop");
+         radioBtnPlay.setAttribute("data-title", "Stop (k)");
       }
    };
 
@@ -64,6 +66,17 @@ export const radioPlayerInitialization = () => {
       }
    }; 
 
+   // change mute state of a track on click to a volume icon
+   const toggleMuteState = () => {
+      audio.muted = !audio.muted;  // toggle mute state of audio (if ture => false and vise versa)
+      if (audio.muted) {
+         radioVolumeBar.setAttribute("data-volume", radioVolumeBar.value); // when audio on pause data-volume holds a previous value of volume bar (like 30% volume)
+         radioVolumeBar.value = 0;
+      } else {
+         radioVolumeBar.value = radioVolumeBar.dataset.volume; // if audio plays get a value from previous value of volume bar (like 30%) and continue playing form that point
+      }
+   };
+
    // event listeners
 
    radioStationContainer.addEventListener("change", (event) => {
@@ -86,17 +99,16 @@ export const radioPlayerInitialization = () => {
 
       radioBtnPlay.addEventListener("click", () => { // functionality to play and pause radio player and change tooltip as well on click to a play btn
          if (audio.paused || audio.ended) {
-            audio.play();
-            radioBtnPlay.setAttribute("data-title", "Pause (k)");
+            audio.play(); 
          } else {
             audio.pause();
-            radioBtnPlay.setAttribute("data-title", "Stop (k)");
          }
          changeIconPlay();
       })
    });
 
    audio.addEventListener("volumechange", updateVolumeIcons);
+   radioVolumeBtn.addEventListener("click", toggleMuteState);
 
    //functions call
 
