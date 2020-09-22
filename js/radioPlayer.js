@@ -7,6 +7,7 @@ export const radioPlayerInitialization = () => {
    const radioNavigation = document.querySelector(".radio-footer__navigation");
    const radioBtnPlay = document.querySelector(".radio-footer__btn");
    const radioVolumeBtn = document.querySelector(".radio-footer__volume-btn");
+   const radioVolumeIcons = document.querySelectorAll(".radio-footer__volume-icon");
    const radioVolumeMute = document.querySelector(".radio-volume-mute");
    const radioVolumeDown = document.querySelector(".radio-volume-down");
    const radioVolumeUp = document.querySelector(".radio-volume-up");
@@ -44,6 +45,25 @@ export const radioPlayerInitialization = () => {
       audio.volume = .5; // make a audio volume 50% by default
       radioVolumeBar.value = audio.volume * 100;
    };
+
+   //update toggle volume icons that depend on audio volume state
+   const updateVolumeIcons = () => {
+      radioVolumeIcons.forEach(icon => {
+         icon.classList.add("hidden");
+      });
+
+      radioVolumeBtn.setAttribute("data-title", "Mute (m)");
+
+      if (audio.muted || audio.volume === 0) {
+         radioVolumeBtn.setAttribute("data-title", "Unmute (m)");
+         radioVolumeMute.classList.remove("hidden");
+      } else if (audio.volume > 0 && audio.volume < 0.5) {
+         radioVolumeDown.classList.remove("hidden");
+      } else {
+         radioVolumeUp.classList.remove("hidden");
+      }
+   }; 
+
    // event listeners
 
    radioStationContainer.addEventListener("change", (event) => {
@@ -51,7 +71,7 @@ export const radioPlayerInitialization = () => {
 
       const target = event.target;
       const parentOfTarget = target.closest(".radio-stations__item"); // get a parent of clicked radio station (target)
-      
+
       const radioStationTitle = parentOfTarget.querySelector(".radio-stations__name").textContent; // get a name (as text) of radio station
       radioPlayerTitle.textContent = radioStationTitle; // change default radio player title to certain clicked radio staion's title
 
@@ -70,11 +90,13 @@ export const radioPlayerInitialization = () => {
             radioBtnPlay.setAttribute("data-title", "Pause (k)");
          } else {
             audio.pause();
-            radioBtnPlay.setAttribute("data-title", "Play (k)");
+            radioBtnPlay.setAttribute("data-title", "Stop (k)");
          }
          changeIconPlay();
       })
    });
+
+   audio.addEventListener("volumechange", updateVolumeIcons);
 
    //functions call
 
